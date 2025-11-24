@@ -10,6 +10,7 @@ require 'src/states/statestack'
 require 'src/states/game/start'
 require 'src/states/game/dev'
 require 'src/entity/card'
+require 'src/entity/hand'
 require 'src/entity/deck'
 
 
