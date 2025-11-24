@@ -5,17 +5,25 @@ function DevModeState:init()
   self.deck = Deck()
   self.perm = self:shuffle()
 
-  self.score = 0
+  self.score  = 0
+  self.ncards = 8
   self.target_score = 300
-  self.card_on_hand = 8
 
   self.type = 0
-  self.hand = Hand(self.deck.cards,self.card_on_hand)
+  self.hand = Hand(self.ncards)
 
-  for i=1,self.card_on_hand do
-    self.hand:draw(table.remove(self.perm))
+  for i=1,self.ncards do
+    self:draw()
   end
-  self.deck.cards[self.hand.ptr].state=CARD_POINTR
+  self:point()
+end
+
+function DevModeState:draw()
+  self.hand:draw(self.deck.cards[table.remove(self.perm)])
+end
+
+function DevModeState:point()
+  self.hand.hand[self.hand.i].state=CARD_POINTR
 end
 
 function DevModeState:shuffle()
@@ -43,11 +51,11 @@ function DevModeState:update(dt)
     self.score = self.score+SCORES[self.type].base*SCORES[self.type].multiplier
     self.type  = 0
     self.hand:play()
-    for i=1,(self.card_on_hand-#self.hand.hand) do
-      self.hand:draw(table.remove(self.perm))
+    self.hand:reset()
+    for i=1,(self.ncards-#self.hand.hand) do
+      self:draw()
     end
-    self.hand.nsel  = 0
-    self.deck.cards[self.hand.ptr].state=CARD_POINTR
+    self:point()
   end
 end
 
@@ -57,14 +65,14 @@ function DevModeState:render()
   local y = VH-256
   local x = 0
   for i,v in pairs(self.hand.hand) do
-    if self.deck.cards[v].state>CARD_ONHAND then
+    if v.state>CARD_ONHAND then
       y = VH-266
     else
       y = VH-256
     end
-    if self.deck.cards[v].state>CARD_PLAYED then
+    if v.state>CARD_PLAYED then
       x = x+80
-      self.deck.cards[v]:render(x,y)
+      v:render(x,y)
     end
   end
 

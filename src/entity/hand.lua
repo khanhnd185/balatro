@@ -1,49 +1,52 @@
 Hand = Class{}
 
-function Hand:init(cards,card_on_hand)
-  self.card_on_hand = card_on_hand
-  self.cards = cards
+function Hand:init(ncards)
+  self.ncards = ncards
   self.hand = {}
-  self.ptr  = 1
-  self.nsel = 0
+  self:reset()
 end
 
-function Hand:draw(n)
-  table.insert(self.hand,n)
-  self.cards[n].state = CARD_ONHAND
+function Hand:draw(card)
+  card.state = CARD_ONHAND
+  table.insert(self.hand,card)
+end
+
+function Hand:reset()
+  self.nsel = 0
+  self.i    = 1
 end
 
 function Hand:moveRight()
-  if self.ptr<self.card_on_hand then
-    if self.ptr>0 and self.cards[self.hand[self.ptr]].state==CARD_POINTR then
-      self.cards[self.hand[self.ptr]].state = CARD_ONHAND
+  if self.i<self.ncards then
+    if self.i>0 and self.hand[self.i].state==CARD_POINTR then
+      self.hand[self.i].state = CARD_ONHAND
     end
-    self.ptr = self.ptr+1
-    if self.cards[self.hand[self.ptr]].state==CARD_ONHAND then
-      self.cards[self.hand[self.ptr]].state = CARD_POINTR
+    self.i = self.i+1
+    if self.hand[self.i].state==CARD_ONHAND then
+      self.hand[self.i].state = CARD_POINTR
     end
   end
 end
 
 function Hand:moveLeft()
-  if self.ptr>1 then
-    if self.cards[self.hand[self.ptr]].state==CARD_POINTR then
-      self.cards[self.hand[self.ptr]].state = CARD_ONHAND
+  if self.i>1 then
+    if self.hand[self.i].state==CARD_POINTR then
+      self.hand[self.i].state = CARD_ONHAND
     end
-    self.ptr = self.ptr-1
-    if self.cards[self.hand[self.ptr]].state==CARD_ONHAND then
-      self.cards[self.hand[self.ptr]].state = CARD_POINTR
+    self.i = self.i-1
+    if self.hand[self.i].state==CARD_ONHAND then
+      self.hand[self.i].state = CARD_POINTR
     end
   end
 end
 
 function Hand:select(current_type)
-  if self.cards[self.hand[self.ptr]].state==CARD_POINTR and self.nsel<5 then
+  if self.hand[self.i].state==CARD_POINTR and self.nsel<5 then
     self.nsel = self.nsel+1
-    self.cards[self.hand[self.ptr]].state = CARD_SELECT
+    self.hand[self.i].state = CARD_SELECT
     return self:eval()
-  elseif self.cards[self.hand[self.ptr]].state==CARD_SELECT then
-    self.cards[self.hand[self.ptr]].state = CARD_POINTR
+  elseif self.hand[self.i].state==CARD_SELECT then
+    self.hand[self.i].state = CARD_POINTR
     self.nsel = self.nsel-1
     return self:eval()
   end
@@ -51,15 +54,15 @@ function Hand:select(current_type)
 end
 
 function Hand:play()
-  self.ptr   = 1
-  self.hand  = {}
-  for i,v in pairs(self.cards) do
+  local hand  = {}
+  for i,v in pairs(self.hand) do
     if v.state==CARD_ONHAND or v.state==CARD_POINTR then
-      self:draw(i)
+      table.insert(hand,v)
     elseif v.state==CARD_SELECT then
       v.state = CARD_PLAYED
     end
   end
+  self.hand = hand
 end
 
 function Hand:eval()
@@ -67,7 +70,7 @@ function Hand:eval()
     return 0
   end
   local cards = {}
-  for i,v in pairs(self.cards) do
+  for i,v in pairs(self.hand) do
     if v.state==CARD_SELECT then
       cards[v.suit+v.rank]=true
     end
