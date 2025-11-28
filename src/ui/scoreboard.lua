@@ -16,6 +16,7 @@ function ScoreBoard:render(type)
     base = SCORES[type].base
     mul  = SCORES[type].multiplier
   end
+  love.graphics.setColor(1,1,1,1)
   love.graphics.setFont(gFonts['medium'])
   love.graphics.draw(gScoreBoard,self.x,self.y)
   love.graphics.printf(tostring(base), self.x+SCOREBOARD_W*0.1, self.y+8, self.w, 'right')

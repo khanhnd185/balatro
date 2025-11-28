@@ -43,8 +43,6 @@ end
 
 function love.draw()
   push:start()
-  -- love.graphics.draw(gBackground,0,0,0,0.5,0.5)
-  -- love.graphics.clear(69/255, 147/255, 155/255, 1)
   love.graphics.clear(51/255, 68/255, 97/255, 1)
   gStateStack:render()
   push:finish()

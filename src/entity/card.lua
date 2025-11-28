@@ -18,7 +18,7 @@ function Card:render(x,y)
   if self.state==CARD_SELECT then
     love.graphics.setColor(1, 1, 1, 1)
   else
-    love.graphics.setColor(0.75, 0.75, 0.75, 1)
+    love.graphics.setColor(0.85, 0.85, 0.85, 1)
   end
   if self.fold then
     love.graphics.draw(gCardCoverSheet,self.back,x,y)

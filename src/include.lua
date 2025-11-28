@@ -13,6 +13,7 @@ require 'src/states/basestate'
 require 'src/states/statestack'
 require 'src/states/game/start'
 require 'src/states/game/blind'
+require 'src/states/game/run'
 
 require 'src/entity/card'
 require 'src/entity/hand'
@@ -62,6 +63,7 @@ gFonts = {
     ['small'] = love.graphics.newFont('assets/fonts/font.ttf', 8)
   , ['medium'] = love.graphics.newFont('assets/fonts/font.ttf', 16)
   , ['large'] = love.graphics.newFont('assets/fonts/font.ttf', 32)
+  , ['xlarge'] = love.graphics.newFont('assets/fonts/font.ttf', 48)
 }
 gBackground = love.graphics.newImage('assets/images/background.png')
 
