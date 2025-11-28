@@ -1,7 +1,8 @@
 
-DevModeState = Class{__includes = BaseState}
+BlindState = Class{__includes = BaseState}
 
-function DevModeState:init()
+function BlindState:init()
+  self.scoreboard = ScoreBoard(VW-1.1*SCOREBOARD_W,64)
   self.deck = Deck()
   self.perm = self:shuffle()
 
@@ -18,15 +19,15 @@ function DevModeState:init()
   self:point()
 end
 
-function DevModeState:draw()
+function BlindState:draw()
   self.hand:draw(self.deck.cards[table.remove(self.perm)])
 end
 
-function DevModeState:point()
+function BlindState:point()
   self.hand.hand[self.hand.i].state=CARD_POINTR
 end
 
-function DevModeState:shuffle()
+function BlindState:shuffle()
   local a = {}
   for i = 1,52 do
     a[i] = i
@@ -40,7 +41,7 @@ function DevModeState:shuffle()
   return a
 end
 
-function DevModeState:update(dt)
+function BlindState:update(dt)
   if love.keyboard.wasPressed('d') then
     self.hand:moveRight()
   elseif love.keyboard.wasPressed('a') then
@@ -60,18 +61,18 @@ function DevModeState:update(dt)
 end
 
 
-function DevModeState:render()
+function BlindState:render()
   -- render card
-  local y = VH-256
-  local x = 0
+  local y = VH-2*CARDH
+  local x = VW/4
   for i,v in pairs(self.hand.hand) do
     if v.state>CARD_ONHAND then
-      y = VH-266
+      y = VH-2*CARDH-10
     else
-      y = VH-256
+      y = VH-2*CARDH
     end
     if v.state>CARD_PLAYED then
-      x = x+80
+      x = x+CARDW+10
       v:render(x,y)
     end
   end
@@ -82,17 +83,8 @@ function DevModeState:render()
 
   -- render deck
   love.graphics.draw(gCardCoverSheet,gCardCover[COVER_BACK],VH-30, VW-30)
-  
+
 
   -- render current run info
-  love.graphics.draw(gRunInfo,10,VW-80)
-  local base = 'base'
-  local mul  = 'mul'
-  if self.type>0 then
-    base = SCORES[self.type].base
-    mul  = SCORES[self.type].multiplier
-  end
-  love.graphics.draw(gRunInfo,32,32)
-  love.graphics.printf(tostring(base), 48, 40, 50, 'right')
-  love.graphics.printf(tostring(mul) , 128, 40, 50, 'left')
+  self.scoreboard:render(self.type)
 end

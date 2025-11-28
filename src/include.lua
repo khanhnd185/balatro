@@ -3,12 +3,17 @@ Event = require 'lib/knife.event'
 push  = require 'lib/push'
 Timer = require 'lib/knife.timer'
 
-require 'src/statemachine'
 require 'src/util'
+
+require 'src/ui/scoreboard'
+require 'src/ui/textbox'
+
+require 'src/statemachine'
 require 'src/states/basestate'
 require 'src/states/statestack'
 require 'src/states/game/start'
-require 'src/states/game/dev'
+require 'src/states/game/blind'
+
 require 'src/entity/card'
 require 'src/entity/hand'
 require 'src/entity/deck'
@@ -16,11 +21,13 @@ require 'src/entity/deck'
 
 CARDW   = 71
 CARDH   = 95
+SCOREBOARD_W = 156
+SCOREBOARD_H = 32
 
 gCardCoverSheet = love.graphics.newImage('assets/images/balatro-back.png')
 gCardSheet      = love.graphics.newImage('assets/images/balatro-deck.png')
 gLogo           = love.graphics.newImage('assets/images/balatro-logo.png')
-gRunInfo        = love.graphics.newImage('assets/images/balatro-mul-base.png')
+gScoreBoard     = love.graphics.newImage('assets/images/balatro-score-board.png')
 gCardCover  = GenerateQuads(gCardCoverSheet,CARDW,CARDH)
 gCard       = GenerateQuads(gCardSheet,CARDW,CARDH)
 

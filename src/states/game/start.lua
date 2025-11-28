@@ -11,7 +11,7 @@ end
 function StartState:update(dt)
   if love.keyboard.wasPressed('p') then
     gStateStack:pop()
-    gStateStack:push(DevModeState())
+    gStateStack:push(BlindState())
   end
 end
 
