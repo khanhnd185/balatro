@@ -1,6 +1,7 @@
 RunState = Class{__includes = BaseState}
 
 function RunState:init()
+  self.type       = 0
   self.ante       = 1
   self.blind      = BLIND_SMALL
   self.money      = 4
@@ -281,7 +282,11 @@ function RunState:render()
   self.score_box2:render(tostring(self.score))
 
   -- render score board
-  self.type_box:render('Hand type')
+  if self.type>0 then
+    self.type_box:render(HAND_TYPE[self.type])
+  else
+    self.type_box:render('Hand type')
+  end
   self.base_box:render(tostring(self.base))
   self.mult_box:render(tostring(self.mult))
 
@@ -302,5 +307,5 @@ function RunState:render()
 
   -- render run info
   self.run_box:render('Run Info (Q)')
-  self.opt_box:render('Deck Info (E)')
+  self.opt_box:render('Deck Info (Enter)')
 end

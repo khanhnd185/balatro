@@ -1,16 +1,16 @@
 
 BlindState = Class{__includes = BaseState}
 
-function BlindState:init()
+function BlindState:init(run_info)
+  self.run_info = run_info
+
   self.scoreboard = ScoreBoard(VW-1.1*SCOREBOARD_W,64)
   self.deck = Deck()
   self.perm = self:shuffle()
 
-  self.score  = 0
   self.ncards = 8
   self.target_score = 300
 
-  self.type = 0
   self.hand = Hand(self.ncards)
 
   for i=1,self.ncards do
@@ -47,16 +47,43 @@ function BlindState:update(dt)
   elseif love.keyboard.wasPressed('a') then
     self.hand:moveLeft()
   elseif love.keyboard.wasPressed('space') then -- select
-    self.type = self.hand:select(self.tpe)
-  elseif love.keyboard.wasPressed('return') and self.type>0 then
-    self.score = self.score+SCORES[self.type].base*SCORES[self.type].multiplier
-    self.type  = 0
+    self.run_info.type = self.hand:select(self.run_info.type)
+    if self.run_info.type>0 then
+      self.run_info.base = SCORES[self.run_info.type].base
+      self.run_info.mult = SCORES[self.run_info.type].mult
+    else
+      self.run_info.base = 0
+      self.run_info.mult = 0
+    end
+  elseif love.keyboard.wasPressed('z') and self.run_info.type>0 and self.run_info.hand>0 then
+    self.run_info.score = self.run_info.score+SCORES[self.run_info.type].base*SCORES[self.run_info.type].mult
+    self.run_info.hand  = self.run_info.hand-1
+    self.run_info.base  = 0
+    self.run_info.mult  = 0
+    self.run_info.type  = 0
+
     self.hand:play()
     self.hand:reset()
     for i=1,(self.ncards-#self.hand.hand) do
       self:draw()
     end
     self:point()
+  elseif love.keyboard.wasPressed('x') and self.run_info.type>0  and self.run_info.discard>0 then
+    self.run_info.discard = self.run_info.discard-1
+    self.run_info.base    = 0
+    self.run_info.mult    = 0
+    self.run_info.type    = 0
+
+    self.hand:play()
+    self.hand:reset()
+    for i=1,(self.ncards-#self.hand.hand) do
+      self:draw()
+    end
+    self:point()
+  elseif love.keyboard.wasPressed('q') then
+    gStateStack:push(RunInfoState(gStateStack.states[#gStateStack.states]))
+  elseif love.keyboard.wasPressed('return') then
+    gStateStack:push(DeckInfoState(gStateStack.states[#gStateStack.states]))
   end
 end
 
@@ -64,7 +91,7 @@ end
 function BlindState:render()
   -- render card
   local y = VH-2*CARDH
-  local x = VW/4
+  local x = VW/6
   for i,v in pairs(self.hand.hand) do
     if v.state>CARD_ONHAND then
       y = VH-2*CARDH-10
@@ -77,14 +104,6 @@ function BlindState:render()
     end
   end
 
-  -- render score
-  love.graphics.printf(tostring(self.score) .. '/' .. tostring(self.target_score), 0, 32, VW-30, 'right')
-  
-
   -- render deck
   love.graphics.draw(gCardCoverSheet,gCardCover[COVER_BACK],VH-30, VW-30)
-
-
-  -- render current run info
-  self.scoreboard:render(self.type)
 end

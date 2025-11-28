@@ -14,19 +14,21 @@ require 'src/states/statestack'
 require 'src/states/game/start'
 require 'src/states/game/blind'
 require 'src/states/game/run'
+require 'src/states/game/run_info'
+require 'src/states/game/deck_info'
 
 require 'src/entity/card'
 require 'src/entity/hand'
 require 'src/entity/deck'
 
 
-CARDW   = 71
-CARDH   = 95
+CARDW   = 103
+CARDH   = 138
 SCOREBOARD_W = 156
 SCOREBOARD_H = 32
 
-gCardCoverSheet = love.graphics.newImage('assets/images/balatro-back.png')
-gCardSheet      = love.graphics.newImage('assets/images/balatro-deck.png')
+gCardCoverSheet = love.graphics.newImage('assets/images/deck-large-back.png')
+gCardSheet      = love.graphics.newImage('assets/images/deck-large.png')
 gLogo           = love.graphics.newImage('assets/images/balatro-logo.png')
 gScoreBoard     = love.graphics.newImage('assets/images/balatro-score-board.png')
 gCardCover  = GenerateQuads(gCardCoverSheet,CARDW,CARDH)
@@ -62,6 +64,7 @@ HEIGHT  = 720  -- real height
 gFonts = {
     ['small'] = love.graphics.newFont('assets/fonts/font.ttf', 8)
   , ['medium'] = love.graphics.newFont('assets/fonts/font.ttf', 16)
+  , ['mlarge'] = love.graphics.newFont('assets/fonts/font.ttf', 24)
   , ['large'] = love.graphics.newFont('assets/fonts/font.ttf', 32)
   , ['xlarge'] = love.graphics.newFont('assets/fonts/font.ttf', 48)
 }
@@ -69,29 +72,28 @@ gBackground = love.graphics.newImage('assets/images/background.png')
 
 -- hand type string
 HAND_TYPE = {
-    "T.B.D"
-  , "High card"
+    "High card"
   , "Pair"
   , "Two pair"
-  , "Three of a kind"
+  , "A three"
   , "Straight"
   , "Flush"
   , "Full house"
-  , "Four of a kind"
-  , "Straight flush"
+  , "A Four"
+  , "Strght flush"
 }
 
 -- type-based score
 SCORES = {
-    {base=5  , multiplier=1}  -- high card
-  , {base=10 , multiplier=2}  -- pair
-  , {base=20 , multiplier=2}  -- two pair
-  , {base=30 , multiplier=3}  -- three of a kind
-  , {base=30 , multiplier=4}  -- straight
-  , {base=35 , multiplier=4}  -- flush
-  , {base=40 , multiplier=4}  -- full house
-  , {base=60 , multiplier=7}  -- four of a kind
-  , {base=100, multiplier=8}  -- straight flush
+    {base=5  , mult=1}  -- high card
+  , {base=10 , mult=2}  -- pair
+  , {base=20 , mult=2}  -- two pair
+  , {base=30 , mult=3}  -- three of a kind
+  , {base=30 , mult=4}  -- straight
+  , {base=35 , mult=4}  -- flush
+  , {base=40 , mult=4}  -- full house
+  , {base=60 , mult=7}  -- four of a kind
+  , {base=100, mult=8}  -- straight flush
 }
 
 ANTE_BASE = {

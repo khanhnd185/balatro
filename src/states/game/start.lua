@@ -12,7 +12,7 @@ function StartState:update(dt)
   if love.keyboard.wasPressed('p') then
     gStateStack:pop()
     gStateStack:push(RunState())
-    gStateStack:push(BlindState())
+    gStateStack:push(BlindState(gStateStack.states[#gStateStack.states]))
   end
 end
 

@@ -14,7 +14,7 @@ function ScoreBoard:render(type)
     mul  = '-'
   elseif type>0 then
     base = SCORES[type].base
-    mul  = SCORES[type].multiplier
+    mul  = SCORES[type].mult
   end
   love.graphics.setColor(1,1,1,1)
   love.graphics.setFont(gFonts['medium'])
