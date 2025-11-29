@@ -1,7 +1,7 @@
 
-BlindState = Class{__includes = BaseState}
+PlayState = Class{__includes = BaseState}
 
-function BlindState:init(run_info)
+function PlayState:init(run_info)
   self.run_info = run_info
 
   self.scoreboard = ScoreBoard(VW-1.1*SCOREBOARD_W,64)
@@ -19,15 +19,15 @@ function BlindState:init(run_info)
   self:point()
 end
 
-function BlindState:draw()
+function PlayState:draw()
   self.hand:draw(self.deck.cards[table.remove(self.perm)])
 end
 
-function BlindState:point()
+function PlayState:point()
   self.hand.hand[self.hand.i].state=CARD_POINTR
 end
 
-function BlindState:shuffle()
+function PlayState:shuffle()
   local a = {}
   for i = 1,52 do
     a[i] = i
@@ -41,7 +41,7 @@ function BlindState:shuffle()
   return a
 end
 
-function BlindState:update(dt)
+function PlayState:update(dt)
   if love.keyboard.wasPressed('d') then
     self.hand:moveRight()
   elseif love.keyboard.wasPressed('a') then
@@ -88,7 +88,7 @@ function BlindState:update(dt)
 end
 
 
-function BlindState:render()
+function PlayState:render()
   -- render card
   local y = VH-2*CARDH
   local x = VW/6

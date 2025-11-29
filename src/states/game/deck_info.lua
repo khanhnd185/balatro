@@ -27,7 +27,7 @@ function DeckInfoState:init(blind_state)
     , c1 = {r=25, g=25, b=25}
     , c2 = {r=234, g=150, b=0}
     , c3 = {r=255, g=255, b=255}
-    , size = 'mlarge'
+    , size = 'xmedium'
     , dx = 4
     , dy = 4
   })

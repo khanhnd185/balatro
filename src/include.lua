@@ -12,7 +12,7 @@ require 'src/statemachine'
 require 'src/states/basestate'
 require 'src/states/statestack'
 require 'src/states/game/start'
-require 'src/states/game/blind'
+require 'src/states/game/play'
 require 'src/states/game/run'
 require 'src/states/game/run_info'
 require 'src/states/game/deck_info'
@@ -64,7 +64,7 @@ HEIGHT  = 720  -- real height
 gFonts = {
     ['small'] = love.graphics.newFont('assets/fonts/font.ttf', 8)
   , ['medium'] = love.graphics.newFont('assets/fonts/font.ttf', 16)
-  , ['mlarge'] = love.graphics.newFont('assets/fonts/font.ttf', 24)
+  , ['xmedium'] = love.graphics.newFont('assets/fonts/font.ttf', 24)
   , ['large'] = love.graphics.newFont('assets/fonts/font.ttf', 32)
   , ['xlarge'] = love.graphics.newFont('assets/fonts/font.ttf', 48)
 }
