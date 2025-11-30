@@ -12,11 +12,12 @@ function SelectState:init(run_info)
     , h = 384
     , c1 = {r=25, g=25, b=25}
     , c2 = {r=137, g=154, b=209}
-    , c3 = {r=255, g=255, b=255}
+    , c3 = {r=51, g=68, b=97}
     , size = 'xmedium'
     , dx = 8
     , dy = 4
     , stat = STAT_CREATED
+    , score = ANTE_BASE[self.run_info.ante]*BLIND_MULT[BLIND_SMALL]
   })
 
   x = x+280
@@ -27,11 +28,12 @@ function SelectState:init(run_info)
     , h = 384
     , c1 = {r=25, g=25, b=25}
     , c2 = {r=113, g=141, b=191}
-    , c3 = {r=255, g=255, b=255}
+    , c3 = {r=51, g=68, b=97}
     , size = 'xmedium'
     , dx = 8
     , dy = 4
     , stat = STAT_CREATED
+    , score = ANTE_BASE[self.run_info.ante]*BLIND_MULT[BLIND_BIG]
   })
 
   x = x+280
@@ -42,11 +44,12 @@ function SelectState:init(run_info)
     , h = 384
     , c1 = {r=25, g=25, b=25}
     , c2 = {r=93, g=94, b=142}
-    , c3 = {r=255, g=255, b=255}
+    , c3 = {r=51, g=68, b=97}
     , size = 'xmedium'
     , dx = 8
     , dy = 4
     , stat = STAT_CREATED
+    , score = ANTE_BASE[self.run_info.ante]*BLIND_MULT[BLING_BOSS]
   })
 end
 

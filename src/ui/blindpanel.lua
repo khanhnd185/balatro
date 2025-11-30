@@ -17,6 +17,7 @@ function BlindPanel:init(def)
   self.dy   = def.dy
   self.r    = 8
   self.stat = def.stat
+  self.score = def.score
 
 
   local box_w = 128
@@ -53,9 +54,13 @@ function BlindPanel:render()
   love.graphics.setColor(self.c2.r/255,self.c2.g/255,self.c2.b/255,1)
   love.graphics.rectangle("fill",self.x,self.y,self.w,self.h,self.r,self.r)
 
-  love.graphics.setColor(self.c3.r/255,self.c3.g/255,self.c3.b/255,1)
+  love.graphics.setColor(1,1,1,1)
   love.graphics.setFont(gFonts[self.size])
   love.graphics.printf('Score at least', self.x+self.dx*4, self.y+self.dy*2,self.w-2*self.dx,'left')
+
+  love.graphics.setColor(self.c3.r/255,self.c3.g/255,self.c3.b/255,1)
+  love.graphics.setFont(gFonts['xlarge'])
+  love.graphics.printf(tostring(self.score), self.x+72, self.y+40,self.w-64,'left')
 
   self.play_box:render('Play (z)')
   self.skip_box:render('Skip (x)')

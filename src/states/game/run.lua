@@ -11,7 +11,6 @@ function RunState:init()
   self.base       = 0
   self.mult       = 0
   self.score      = 0
-  self.tg_score   = 300
 
   local x = 20
   local y = -60
@@ -404,7 +403,7 @@ function RunState:render()
 
   -- render round score
   self.target_score_box:render('Score at least')
-  self.target_score_txt:render(tostring(self.tg_score))
+  self.target_score_txt:render(tostring(ANTE_BASE[self.ante]*BLIND_MULT[self.blind]))
   self.score_box1:render('score')
   self.score_box2:render(tostring(self.score))
 
@@ -437,14 +436,14 @@ function RunState:render()
   self.opt_box:render('Deck Info (E)')
 
   -- render button
-  self.but_q:render('q')
-  self.but_w:render('w')
-  self.but_e:render('e')
-  self.but_a:render('a')
-  self.but_s:render('s')
-  self.but_d:render('d')
-  self.but_z:render('z')
-  self.but_x:render('x')
-  self.but_c:render('c')
-  self.but_space:render('space')
+  -- self.but_q:render('q')
+  -- self.but_w:render('w')
+  -- self.but_e:render('e')
+  -- self.but_a:render('a')
+  -- self.but_s:render('s')
+  -- self.but_d:render('d')
+  -- self.but_z:render('z')
+  -- self.but_x:render('x')
+  -- self.but_c:render('c')
+  -- self.but_space:render('space')
 end
