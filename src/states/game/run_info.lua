@@ -1,7 +1,7 @@
 RunInfoState = Class{__includes = BaseState}
 
-function RunInfoState:init(blind_state)
-  -- self.run_info = blind_state.run_info
+function RunInfoState:init(play)
+  self.run = play.run
   local x = 384
   local y = 40
   self.window  = ShadowTextBox({
@@ -89,8 +89,8 @@ function RunInfoState:render()
     self.window:render('Run Info')
     for i=1,#HAND_TYPE do
       self.run_info_boxes[i]:render(HAND_TYPE[i])
-      self.base_boxes[i]:render(SCORES[i].base)
-      self.mult_boxes[i]:render(SCORES[i].mult)
+      self.base_boxes[i]:render(self.run.scores[i].base)
+      self.mult_boxes[i]:render(self.run.scores[i].mult)
     end
     self.back_box:render('Back (x)')
 end

@@ -1,12 +1,12 @@
 
 PlayState = Class{__includes = BaseState}
 
-function PlayState:init(run_info)
-  self.run_info = run_info
-  self.deck     = Deck()
-  self.perm     = self:shuffle()
-  self.ncards   = 8
-  self.hand     = Hand(self.ncards)
+function PlayState:init(run)
+  self.run    = run
+  self.deck   = Deck()
+  self.perm   = self:shuffle()
+  self.ncards = 8
+  self.hand   = Hand(self.ncards)
 
   for i=1,self.ncards do
     self:draw()
@@ -41,28 +41,17 @@ function PlayState:update(dt)
     self.hand:moveRight()
   elseif love.keyboard.wasPressed('a') then
     self.hand:moveLeft()
-  elseif love.keyboard.wasPressed('space') then -- select
-    self.run_info.type = self.hand:select(self.run_info.type)
-    if self.run_info.type>0 then
-      self.run_info.base = SCORES[self.run_info.type].base
-      self.run_info.mult = SCORES[self.run_info.type].mult
-    else
-      self.run_info.base = 0
-      self.run_info.mult = 0
-    end
-  elseif love.keyboard.wasPressed('z') and self.run_info.type>0 and self.run_info.hand>0 then
-    self.run_info.score = self.run_info.score+SCORES[self.run_info.type].base*SCORES[self.run_info.type].mult
-    self.run_info.hand  = self.run_info.hand-1
-    self.run_info.base  = 0
-    self.run_info.mult  = 0
-    self.run_info.type  = 0
-
-    if self.run_info.score>=self.run_info.tgt_score then
-      self.run_info:win()
+  elseif love.keyboard.wasPressed('space') then
+    self.run.type = self.hand:select(self.run.type)
+    self.run:update()
+  elseif love.keyboard.wasPressed('z') and self.run.type>0 and self.run.hand>0 then
+    self.run:play()
+    if self.run.score>=self.run.tgt_score then
+      self.run:win()
       gStateStack:pop()
       gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
-    elseif self.run_info.hand==0 then
-      self.run_info:lose()
+    elseif self.run.hand==0 then
+      self.run:lose()
       gStateStack:pop()
       gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
     else
@@ -73,11 +62,11 @@ function PlayState:update(dt)
       end
       self:point()
     end
-  elseif love.keyboard.wasPressed('x') and self.run_info.type>0  and self.run_info.discard>0 then
-    self.run_info.discard = self.run_info.discard-1
-    self.run_info.base    = 0
-    self.run_info.mult    = 0
-    self.run_info.type    = 0
+  elseif love.keyboard.wasPressed('x') and self.run.type>0  and self.run.discard>0 then
+    self.run.discard = self.run.discard-1
+    self.run.base    = 0
+    self.run.mult    = 0
+    self.run.type    = 0
 
     self.hand:play()
     self.hand:reset()

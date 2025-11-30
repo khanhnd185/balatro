@@ -85,7 +85,7 @@ HAND_TYPE = {
 }
 
 -- type-based score
-SCORES = {
+gInitScores = {
     {base=5  , mult=1}  -- high card
   , {base=10 , mult=2}  -- pair
   , {base=20 , mult=2}  -- two pair

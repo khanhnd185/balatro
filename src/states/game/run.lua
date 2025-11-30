@@ -1,17 +1,7 @@
 RunState = Class{__includes = BaseState}
 
 function RunState:init()
-  self.type       = 0
-  self.ante       = 1
-  self.blind      = BLIND_SMALL
-  self.money      = 4
-  self.hand       = 5
-  self.discard    = 3
-  self.round      = 1
-  self.base       = 0
-  self.mult       = 0
-  self.score      = 0
-  self.tgt_score  = ANTE_BASE[self.ante]*BLIND_MULT[self.blind]
+  self:lose()
 
   local x = 20
   local y = -60
@@ -395,10 +385,25 @@ function RunState:init()
   })
 end
 
-function RunState:update(dt)
+function RunState:update()
+  if self.type>0 then
+    self.base = self.scores[self.type].base
+    self.mult = self.scores[self.type].mult
+  else
+    self.base = 0
+    self.mult = 0
+  end
 end
 
-function RunState:endRound()
+function RunState:play()
+  self.score = self.score+self.base*self.mult
+  self.hand  = self.hand-1
+  self.base  = 0
+  self.mult  = 0
+  self.type  = 0
+end
+
+function RunState:pass()
   if self.blind<BLIND_BOSS then
     self.blind = self.blind+1
   else
@@ -409,14 +414,14 @@ function RunState:endRound()
 end
 
 function RunState:skip()
-  self:endRound()
+  self:pass()
   self:reset()
 
   -- reward for skipping
 end
 
 function RunState:win()
-  self:endRound()
+  self:pass()
   self:reset()
 
   -- reward for winning
@@ -425,9 +430,20 @@ function RunState:win()
 end
 
 function RunState:lose()
+  self:reset()
   self.ante       = 1
   self.blind      = BLIND_SMALL
   self.money      = 4
+  self.round      = 1
+  self.tgt_score  = ANTE_BASE[self.ante]*BLIND_MULT[self.blind]
+  self.scores     = {}
+  for i=1,#gInitScores do
+    table.insert(self.scores, {
+        base=gInitScores[i].base
+      , mult=gInitScores[i].mult
+      , level=1
+    })
+  end
 end
 
 function RunState:reset()
@@ -438,6 +454,7 @@ function RunState:reset()
   self.mult       = 0
   self.score      = 0
 end
+
 function RunState:render()
   -- render menu background
   self.background:render(nil)

@@ -1,7 +1,7 @@
 DeckInfoState = Class{__includes = BaseState}
 
-function DeckInfoState:init(blind_state)
-  self.cards = blind_state.deck.cards
+function DeckInfoState:init(play)
+  self.cards = play.deck.cards
   self.x = 384
   self.y = 40
   self.w = 720
