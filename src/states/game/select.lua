@@ -5,23 +5,22 @@ function SelectState:init(run_info)
 
   local x = 320
   local y = 200
-  self.small_blind = BlindPanel({
-      x = x
-    , y = y
-    , w = 256
-    , h = 384
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=137, g=154, b=209}
-    , c3 = {r=51, g=68, b=97}
-    , size = 'xmedium'
-    , dx = 8
-    , dy = 4
-    , stat = STAT_CREATED
-    , score = ANTE_BASE[self.run_info.ante]*BLIND_MULT[BLIND_SMALL]
-  })
+  local stat_small = STAT_CREATED
+  local stat_big   = STAT_CREATED
+  local stat_boss  = STAT_CREATED
 
-  x = x+280
-  self.big_blind = BlindPanel({
+  if self.run_info.blind==BLIND_SMALL then
+    stat_small = STAT_POINTED
+  elseif self.run_info.blind==BLIND_BIG then
+    stat_small = STAT_SKIPPED
+    stat_big   = STAT_POINTED
+  else
+    stat_small = STAT_SKIPPED
+    stat_big   = STAT_SKIPPED
+    stat_boss  = STAT_POINTED
+  end
+
+  self.small_blind = BlindPanel({
       x = x
     , y = y
     , w = 256
@@ -32,7 +31,23 @@ function SelectState:init(run_info)
     , size = 'xmedium'
     , dx = 8
     , dy = 4
-    , stat = STAT_CREATED
+    , stat = stat_small
+    , score = ANTE_BASE[self.run_info.ante]*BLIND_MULT[BLIND_SMALL]
+  })
+
+  x = x+280
+  self.big_blind = BlindPanel({
+      x = x
+    , y = y
+    , w = 256
+    , h = 384
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=137, g=154, b=209}
+    , c3 = {r=51, g=68, b=97}
+    , size = 'xmedium'
+    , dx = 8
+    , dy = 4
+    , stat = stat_big
     , score = ANTE_BASE[self.run_info.ante]*BLIND_MULT[BLIND_BIG]
   })
 
@@ -48,8 +63,8 @@ function SelectState:init(run_info)
     , size = 'xmedium'
     , dx = 8
     , dy = 4
-    , stat = STAT_CREATED
-    , score = ANTE_BASE[self.run_info.ante]*BLIND_MULT[BLING_BOSS]
+    , stat = stat_boss
+    , score = ANTE_BASE[self.run_info.ante]*BLIND_MULT[BLIND_BOSS]
   })
 end
 

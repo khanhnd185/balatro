@@ -3,15 +3,10 @@ PlayState = Class{__includes = BaseState}
 
 function PlayState:init(run_info)
   self.run_info = run_info
-
-  self.scoreboard = ScoreBoard(VW-1.1*SCOREBOARD_W,64)
-  self.deck = Deck()
-  self.perm = self:shuffle()
-
-  self.ncards = 8
-  self.target_score = 300
-
-  self.hand = Hand(self.ncards)
+  self.deck     = Deck()
+  self.perm     = self:shuffle()
+  self.ncards   = 8
+  self.hand     = Hand(self.ncards)
 
   for i=1,self.ncards do
     self:draw()
@@ -62,12 +57,22 @@ function PlayState:update(dt)
     self.run_info.mult  = 0
     self.run_info.type  = 0
 
-    self.hand:play()
-    self.hand:reset()
-    for i=1,(self.ncards-#self.hand.hand) do
-      self:draw()
+    if self.run_info.score>=self.run_info.tgt_score then
+      self.run_info:win()
+      gStateStack:pop()
+      gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
+    elseif self.run_info.hand==0 then
+      self.run_info:lose()
+      gStateStack:pop()
+      gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
+    else
+      self.hand:play()
+      self.hand:reset()
+      for i=1,(self.ncards-#self.hand.hand) do
+        self:draw()
+      end
+      self:point()
     end
-    self:point()
   elseif love.keyboard.wasPressed('x') and self.run_info.type>0  and self.run_info.discard>0 then
     self.run_info.discard = self.run_info.discard-1
     self.run_info.base    = 0

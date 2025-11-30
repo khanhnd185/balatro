@@ -11,6 +11,7 @@ function RunState:init()
   self.base       = 0
   self.mult       = 0
   self.score      = 0
+  self.tgt_score  = ANTE_BASE[self.ante]*BLIND_MULT[self.blind]
 
   local x = 20
   local y = -60
@@ -397,13 +398,53 @@ end
 function RunState:update(dt)
 end
 
+function RunState:endRound()
+  if self.blind<BLIND_BOSS then
+    self.blind = self.blind+1
+  else
+    self.blind = BLIND_SMALL
+    self.ante  = self.ante+1
+  end
+  self.tgt_score  = ANTE_BASE[self.ante]*BLIND_MULT[self.blind]
+end
+
+function RunState:skip()
+  self:endRound()
+  self:reset()
+
+  -- reward for skipping
+end
+
+function RunState:win()
+  self:endRound()
+  self:reset()
+
+  -- reward for winning
+  self.money = self.money+10
+  self.round = self.round+1
+end
+
+function RunState:lose()
+  self.ante       = 1
+  self.blind      = BLIND_SMALL
+  self.money      = 4
+end
+
+function RunState:reset()
+  self.type       = 0
+  self.hand       = 5
+  self.discard    = 3
+  self.base       = 0
+  self.mult       = 0
+  self.score      = 0
+end
 function RunState:render()
   -- render menu background
   self.background:render(nil)
 
   -- render round score
   self.target_score_box:render('Score at least')
-  self.target_score_txt:render(tostring(ANTE_BASE[self.ante]*BLIND_MULT[self.blind]))
+  self.target_score_txt:render(tostring(self.tgt_score))
   self.score_box1:render('score')
   self.score_box2:render(tostring(self.score))
 

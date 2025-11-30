@@ -5,7 +5,6 @@ Timer = require 'lib/knife.timer'
 
 require 'src/util'
 
-require 'src/ui/scoreboard'
 require 'src/ui/textbox'
 require 'src/ui/blindpanel'
 
@@ -117,7 +116,7 @@ BLIND_MULT = {
 
 BLIND_SMALL = 1
 BLIND_BIG   = 2
-BLING_BOSS  = 3
+BLIND_BOSS  = 3
 
 
 
