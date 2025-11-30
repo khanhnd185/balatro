@@ -7,11 +7,13 @@ require 'src/util'
 
 require 'src/ui/scoreboard'
 require 'src/ui/textbox'
+require 'src/ui/blindpanel'
 
 require 'src/statemachine'
 require 'src/states/basestate'
 require 'src/states/statestack'
 require 'src/states/game/start'
+require 'src/states/game/select'
 require 'src/states/game/play'
 require 'src/states/game/run'
 require 'src/states/game/run_info'

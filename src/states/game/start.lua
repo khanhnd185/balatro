@@ -12,7 +12,7 @@ function StartState:update(dt)
   if love.keyboard.wasPressed('p') then
     gStateStack:pop()
     gStateStack:push(RunState())
-    gStateStack:push(PlayState(gStateStack.states[#gStateStack.states]))
+    gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
   end
 end
 
@@ -20,6 +20,6 @@ function StartState:render()
   love.graphics.draw(gLogo,460,240)
   love.graphics.setColor(1,1,1,1)
   love.graphics.setFont(gFonts['xlarge'])
-  love.graphics.printf('Press P for Dev Mode',0,VH-64,VW,'center')
+  love.graphics.printf('Press P to Play',0,VH-64,VW,'center')
   love.graphics.setFont(gFonts['medium'])
 end
