@@ -17,11 +17,23 @@ function RunInfoState:init(play)
     , dx = 80
     , dy = 8
   })
+
   x = x+96
   y = y+80
+
+  self.pointer = VerticalPointer({
+      x     = x-16
+    , y     = y+16
+    , dx    = 0
+    , dy    = 48
+    , size  = 32
+    , color = {r=79, g=99, b=103}
+  })
+
   self.run_info_boxes = {}
   self.base_boxes = {}
   self.mult_boxes = {}
+  self.lvl_boxes  = {}
   for i=1,#HAND_TYPE do
     table.insert(self.run_info_boxes, ShadowTextBox({
           x = x
@@ -33,7 +45,7 @@ function RunInfoState:init(play)
         , c2 = {r=93, g=94, b=142}
         , c3 = {r=255, g=255, b=255}
         , size = 'xmedium'
-        , dx = 12
+        , dx = 32
         , dy = 4
       })
     )
@@ -63,6 +75,19 @@ function RunInfoState:init(play)
         , dy = 3
       })
     )
+    table.insert(self.lvl_boxes, TextBox({
+          x = x+8
+        , y = y+4
+        , w = 96
+        , h = 32
+        , c1 = {r=25, g=25, b=25}
+        , c2 = {r=137, g=154, b=209}
+        , c3 = {r=255, g=255, b=255}
+        , size = 'xmedium'
+        , dx = 3
+        , dy = 3
+      })
+    )
     y = y+48
   end
   self.back_box = ShadowTextBox({
@@ -82,6 +107,10 @@ end
 function RunInfoState:update(dt)
   if love.keyboard.wasPressed('x') then
     gStateStack:pop()
+  elseif love.keyboard.wasPressed('w') then
+    self.pointer:up()
+  elseif love.keyboard.wasPressed('s') then
+    self.pointer:down()
   end
 end
 
@@ -91,6 +120,8 @@ function RunInfoState:render()
       self.run_info_boxes[i]:render(HAND_TYPE[i])
       self.base_boxes[i]:render(self.run.scores[i].base)
       self.mult_boxes[i]:render(self.run.scores[i].mult)
+      self.lvl_boxes[i]:render('lvl.' .. tostring(self.run.scores[i].level))
     end
     self.back_box:render('Back (x)')
+    self.pointer:render()
 end

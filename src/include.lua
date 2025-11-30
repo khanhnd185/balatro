@@ -5,6 +5,7 @@ Timer = require 'lib/knife.timer'
 
 require 'src/util'
 
+require 'src/ui/pointer'
 require 'src/ui/textbox'
 require 'src/ui/blindpanel'
 
