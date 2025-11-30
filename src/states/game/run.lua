@@ -13,9 +13,11 @@ function RunState:init()
   self.score      = 0
   self.tg_score   = 300
 
+  local x = 20
+  local y = -60
   -- Menu pallete
   self.background = TextBox({
-      x = 10
+      x = x
     , y = 0
     , w = 256
     , h = VH
@@ -29,8 +31,8 @@ function RunState:init()
 
   -- target score box
   self.target_score_box  = ShadowTextBox({
-      x = 24
-    , y = 180
+      x = x+14
+    , y = y+80
     , w = 220
     , h = 80
     , c1 = {r=25, g=25, b=25}
@@ -41,8 +43,8 @@ function RunState:init()
     , dy = 2
   })
   self.target_score_txt  = TextBox({
-      x = 40
-    , y = 200
+      x = x+30
+    , y = y+100
     , w = 180
     , h = 40
     , c1 = {r=90, g=171, b=220}
@@ -56,8 +58,8 @@ function RunState:init()
 
   -- Score
   self.score_box1  = TextBox({
-      x = 24
-    , y = 272
+      x = x+14
+    , y = y+172
     , w = 224
     , h = 56
     , c1 = {r=0, g=129, b=211}
@@ -68,8 +70,8 @@ function RunState:init()
     , dy = 10
   })
   self.score_box2  = TextBox({
-      x = 84
-    , y = 280
+      x = x+74
+    , y = y+180
     , w = 156
     , h = 40
     , c1 = {r=51, g=68, b=97}
@@ -84,8 +86,8 @@ function RunState:init()
 
   -- Hand type
   self.type_box   = TextBox({
-      x = 24
-    , y = 334
+      x = x+14
+    , y = y+234
     , w = 224
     , h = 128
     , c1 = {r=0, g=0, b=0}
@@ -96,8 +98,8 @@ function RunState:init()
     , dy = 6
   })
   self.base_box   = TextBox({
-      x = 32
-    , y = 400
+      x = x+22
+    , y = y+300
     , w = 96
     , h = 56
     , c1 = {r=0, g=156, b=253}
@@ -108,8 +110,8 @@ function RunState:init()
     , dy = 6
   })
   self.mult_box   = TextBox({
-      x = 136
-    , y = 400
+      x = x+126
+    , y = y+300
     , w = 96
     , h = 56
     , c1 = {r=236, g=45, b=51}
@@ -123,8 +125,8 @@ function RunState:init()
 
   -- Hand box
   self.hand_box1  = TextBox({
-      x = 112
-    , y = 470
+      x = x+102
+    , y = y+370
     , w = 64
     , h = 64
     , c1 = {r=0, g=129, b=211}
@@ -135,8 +137,8 @@ function RunState:init()
     , dy = 2
   })
   self.hand_box2  = TextBox({
-      x = 116
-    , y = 490
+      x = x+106
+    , y = y+390
     , w = 56
     , h = 40
     , c1 = {r=51, g=68, b=97}
@@ -149,8 +151,8 @@ function RunState:init()
 
   -- Discards box
   self.discard_box1  = TextBox({
-      x = 180
-    , y = 470
+      x = x+170
+    , y = y+370
     , w = 64
     , h = 64
     , c1 = {r=0, g=129, b=211}
@@ -161,8 +163,8 @@ function RunState:init()
     , dy = 2
   })
   self.discard_box2  = TextBox({
-      x = 184
-    , y = 490
+      x = x+174
+    , y = y+390
     , w = 56
     , h = 40
     , c1 = {r=51, g=68, b=97}
@@ -175,8 +177,8 @@ function RunState:init()
 
   -- Money box
   self.money_box  = TextBox({
-      x = 112
-    , y = 542
+      x = x+102
+    , y = y+442
     , w = 130
     , h = 68
     , c1 = {r=0, g=129, b=211}
@@ -189,83 +191,208 @@ function RunState:init()
 
   -- Ante box
   self.ante_box1  = TextBox({
-    x = 112
-  , y = 620
-  , w = 64
-  , h = 64
-  , c1 = {r=0, g=129, b=211}
-  , c2 = {r=0, g=129, b=211}
-  , c3 = {r=255, g=255, b=255}
-  , size = 'medium'
-  , dx = 2
-  , dy = 2
-})
-self.ante_box2  = TextBox({
-    x = 116
-  , y = 640
-  , w = 56
-  , h = 40
-  , c1 = {r=51, g=68, b=97}
-  , c2 = {r=51, g=68, b=97}
-  , c3 = {r=245, g=166, b=0}
-  , size = 'large'
-  , dx = 5
-  , dy = 2
-})
+      x = x+102
+    , y = y+520
+    , w = 64
+    , h = 64
+    , c1 = {r=0, g=129, b=211}
+    , c2 = {r=0, g=129, b=211}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.ante_box2  = TextBox({
+      x = x+106
+    , y = y+540
+    , w = 56
+    , h = 40
+    , c1 = {r=51, g=68, b=97}
+    , c2 = {r=51, g=68, b=97}
+    , c3 = {r=245, g=166, b=0}
+    , size = 'large'
+    , dx = 5
+    , dy = 2
+  })
 
--- Discards box
-self.round_box1  = TextBox({
-    x = 180
-  , y = 620
-  , w = 64
-  , h = 64
-  , c1 = {r=0, g=129, b=211}
-  , c2 = {r=0, g=129, b=211}
-  , c3 = {r=255, g=255, b=255}
-  , size = 'medium'
-  , dx = 1
-  , dy = 2
-})
-self.round_box2  = TextBox({
-    x = 184
-  , y = 640
-  , w = 56
-  , h = 40
-  , c1 = {r=51, g=68, b=97}
-  , c2 = {r=51, g=68, b=97}
-  , c3 = {r=245, g=166, b=0}
-  , size = 'large'
-  , dx = 5
-  , dy = 2
-})
+  -- Discards box
+  self.round_box1  = TextBox({
+      x = x+170
+    , y = y+520
+    , w = 64
+    , h = 64
+    , c1 = {r=0, g=129, b=211}
+    , c2 = {r=0, g=129, b=211}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 1
+    , dy = 2
+  })
+  self.round_box2  = TextBox({
+      x = x+174
+    , y = y+540
+    , w = 56
+    , h = 40
+    , c1 = {r=51, g=68, b=97}
+    , c2 = {r=51, g=68, b=97}
+    , c3 = {r=245, g=166, b=0}
+    , size = 'large'
+    , dx = 5
+    , dy = 2
+  })
 
   -- Run info
   self.run_box  = ShadowTextBox({
-    x = 28
-  , y = 474
-  , w = 72
-  , h = 80
-  , c1 = {r=25, g=25, b=25}
-  , c2 = {r=253, g=95, b=85}
-  , c3 = {r=255, g=255, b=255}
-  , size = 'medium'
-  , dx = 4
-  , dy = 8
-})
+      x = x+18
+    , y = y+474
+    , w = 72
+    , h = 80
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=253, g=95, b=85}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 4
+    , dy = 8
+  })
 
   -- Run info
   self.opt_box  = ShadowTextBox({
-    x = 28
-  , y = 570
-  , w = 72
-  , h = 80
-  , c1 = {r=25, g=25, b=25}
-  , c2 = {r=234, g=150, b=0}
-  , c3 = {r=255, g=255, b=255}
-  , size = 'medium'
-  , dx = 2
-  , dy = 12
-})
+      x = x+18
+    , y = y+370
+    , w = 72
+    , h = 80
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=234, g=150, b=0}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 12
+  })
+
+
+  -- instruction
+  y = y+600
+  x = x+112
+  self.but_q = ShadowTextBox({
+      x = x
+    , y = y
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_w = ShadowTextBox({
+      x = x+40
+    , y = y
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_e = ShadowTextBox({
+      x = x+80
+    , y = y
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_a = ShadowTextBox({
+      x = x
+    , y = y+40
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_s = ShadowTextBox({
+      x = x+40
+    , y = y+40
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_d = ShadowTextBox({
+      x = x+80
+    , y = y+40
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_z = ShadowTextBox({
+      x = x
+    , y = y+80
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_x = ShadowTextBox({
+      x = x+40
+    , y = y+80
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_c = ShadowTextBox({
+      x = x+80
+    , y = y+80
+    , w = 32
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
+  self.but_space = ShadowTextBox({
+      x = x
+    , y = y+120
+    , w = 112
+    , h = 32
+    , c1 = {r=25, g=25, b=25}
+    , c2 = {r=166, g=166, b=166}
+    , c3 = {r=255, g=255, b=255}
+    , size = 'medium'
+    , dx = 2
+    , dy = 2
+  })
 end
 
 function RunState:update(dt)
@@ -307,5 +434,17 @@ function RunState:render()
 
   -- render run info
   self.run_box:render('Run Info (Q)')
-  self.opt_box:render('Deck Info (Enter)')
+  self.opt_box:render('Deck Info (E)')
+
+  -- render button
+  self.but_q:render('q')
+  self.but_w:render('w')
+  self.but_e:render('e')
+  self.but_a:render('a')
+  self.but_s:render('s')
+  self.but_d:render('d')
+  self.but_z:render('z')
+  self.but_x:render('x')
+  self.but_c:render('c')
+  self.but_space:render('space')
 end
