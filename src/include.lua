@@ -87,15 +87,15 @@ HAND_TYPE = {
 
 -- type-based score
 gInitScores = {
-    {base=5  , mult=1}  -- high card
-  , {base=10 , mult=2}  -- pair
-  , {base=20 , mult=2}  -- two pair
-  , {base=30 , mult=3}  -- three of a kind
-  , {base=30 , mult=4}  -- straight
-  , {base=35 , mult=4}  -- flush
-  , {base=40 , mult=4}  -- full house
-  , {base=60 , mult=7}  -- four of a kind
-  , {base=100, mult=8}  -- straight flush
+    {base=5  , mult=1, upbase=10, upmult=1}  -- high card
+  , {base=10 , mult=2, upbase=15, upmult=1}  -- pair
+  , {base=20 , mult=2, upbase=20, upmult=1}  -- two pair
+  , {base=30 , mult=3, upbase=20, upmult=2}  -- three of a kind
+  , {base=30 , mult=4, upbase=30, upmult=3}  -- straight
+  , {base=35 , mult=4, upbase=15, upmult=2}  -- flush
+  , {base=40 , mult=4, upbase=25, upmult=2}  -- full house
+  , {base=60 , mult=7, upbase=30, upmult=3}  -- four of a kind
+  , {base=100, mult=8, upbase=40, upmult=4}  -- straight flush
 }
 
 ANTE_BASE = {

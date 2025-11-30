@@ -75,7 +75,7 @@ function PlayState:update(dt)
     end
     self:point()
   elseif love.keyboard.wasPressed('q') then
-    gStateStack:push(RunInfoState(gStateStack.states[#gStateStack.states]))
+    gStateStack:push(RunInfoState(gStateStack.states[#gStateStack.states],false))
   elseif love.keyboard.wasPressed('e') then
     gStateStack:push(DeckInfoState(gStateStack.states[#gStateStack.states]))
   end

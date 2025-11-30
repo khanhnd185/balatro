@@ -403,6 +403,14 @@ function RunState:play()
   self.type  = 0
 end
 
+function RunState:upgrade(t)
+  if t and t>0 then
+    self.scores[t].base = self.scores[t].base+gInitScores[t].upbase
+    self.scores[t].mult = self.scores[t].mult+gInitScores[t].upmult
+    self.scores[t].level = self.scores[t].level+1
+  end
+end
+
 function RunState:pass()
   if self.blind<BLIND_BOSS then
     self.blind = self.blind+1

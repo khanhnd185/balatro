@@ -1,4 +1,4 @@
-Pointer = Class{}
+VerticalPointer = Class{}
 
 DIRECTION_UP    = 0
 DIRECTION_DOWN  = 1
