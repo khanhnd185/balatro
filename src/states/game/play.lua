@@ -88,9 +88,9 @@ function PlayState:render()
   local x = VW/6
   for i,v in pairs(self.hand.hand) do
     if v.state>CARD_ONHAND then
-      y = VH-2*CARDH-10
+      y = VH-1.5*CARDH-10
     else
-      y = VH-2*CARDH
+      y = VH-1.5*CARDH
     end
     if v.state>CARD_PLAYED then
       x = x+CARDW+10

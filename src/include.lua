@@ -8,6 +8,7 @@ require 'src/util'
 require 'src/ui/pointer'
 require 'src/ui/textbox'
 require 'src/ui/blindpanel'
+require 'src/ui/jokerslot'
 
 require 'src/statemachine'
 require 'src/states/basestate'
@@ -22,6 +23,7 @@ require 'src/states/game/deck_info'
 require 'src/entity/card'
 require 'src/entity/hand'
 require 'src/entity/deck'
+require 'src/entity/joker'
 
 
 CARDW   = 103
@@ -29,10 +31,12 @@ CARDH   = 138
 SCOREBOARD_W = 156
 SCOREBOARD_H = 32
 
+gCardJokerSheet = love.graphics.newImage('assets/images/deck-large-joker.png')
 gCardCoverSheet = love.graphics.newImage('assets/images/deck-large-back.png')
 gCardSheet      = love.graphics.newImage('assets/images/deck-large.png')
 gLogo           = love.graphics.newImage('assets/images/balatro-logo.png')
 gScoreBoard     = love.graphics.newImage('assets/images/balatro-score-board.png')
+gCardJoker  = GenerateQuads(gCardJokerSheet,CARDW,CARDH)
 gCardCover  = GenerateQuads(gCardCoverSheet,CARDW,CARDH)
 gCard       = GenerateQuads(gCardSheet,CARDW,CARDH)
 

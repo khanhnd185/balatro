@@ -3,6 +3,18 @@ RunState = Class{__includes = BaseState}
 function RunState:init()
   self:lose()
 
+  self.jokers = {
+      Joker({id=JOKER_RED,run=self})
+    , Joker({id=JOKER_BLACK,run=self})
+  }
+  self.jokerslot = JokerSlot({
+      x=320
+    , y=16
+    , w=512
+    , h=160
+    , c={r=99, g=77, b=132}
+  })
+
   local x = 20
   local y = -60
   -- Menu pallete
@@ -396,6 +408,9 @@ function RunState:update()
 end
 
 function RunState:play()
+  for i=1,#self.jokers do
+    self.jokers[i]:use()
+  end
   self.score = self.score+self.base*self.mult
   self.hand  = self.hand-1
   self.base  = 0
@@ -512,4 +527,7 @@ function RunState:render()
   -- self.but_x:render('x')
   -- self.but_c:render('c')
   -- self.but_space:render('space')
+
+  -- render joker slot
+  self.jokerslot:render(self.jokers)
 end
