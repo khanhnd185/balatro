@@ -17,7 +17,6 @@ function StartState:update(dt)
 end
 
 function StartState:render()
-  love.graphics.draw(gLogo,460,240)
   love.graphics.setColor(1,1,1,1)
   love.graphics.setFont(gFonts['xlarge'])
   love.graphics.printf('Press P to Play',0,VH-64,VW,'center')

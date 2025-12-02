@@ -34,8 +34,6 @@ SCOREBOARD_H = 32
 gCardJokerSheet = love.graphics.newImage('assets/images/deck-large-joker.png')
 gCardCoverSheet = love.graphics.newImage('assets/images/deck-large-back.png')
 gCardSheet      = love.graphics.newImage('assets/images/deck-large.png')
-gLogo           = love.graphics.newImage('assets/images/balatro-logo.png')
-gScoreBoard     = love.graphics.newImage('assets/images/balatro-score-board.png')
 gCardJoker  = GenerateQuads(gCardJokerSheet,CARDW,CARDH)
 gCardCover  = GenerateQuads(gCardCoverSheet,CARDW,CARDH)
 gCard       = GenerateQuads(gCardSheet,CARDW,CARDH)
@@ -74,7 +72,6 @@ gFonts = {
   , ['large'] = love.graphics.newFont('assets/fonts/font.ttf', 32)
   , ['xlarge'] = love.graphics.newFont('assets/fonts/font.ttf', 48)
 }
-gBackground = love.graphics.newImage('assets/images/background.png')
 
 -- hand type string
 HAND_TYPE = {
@@ -131,3 +128,9 @@ CARD_PLAYED = 1
 CARD_ONHAND = 2
 CARD_POINTR = 3
 CARD_SELECT = 4
+
+
+-- music
+gSounds = {
+  ['background'] = love.audio.newSource('assets/sounds/a-lonely-cherry-tree.mp3', 'static'),
+}
