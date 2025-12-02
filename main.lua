@@ -17,6 +17,7 @@ function love.load()
 
   gSounds['background']:setLooping(true)
   gSounds['background']:play()
+  gBackgroundMusicOn = true
 
   love.keyboard.keysPressed = {}
 end
@@ -42,7 +43,13 @@ function love.update(dt)
   gStateStack:update(dt)
 
   if love.keyboard.wasPressed('m') then
-    gSounds['background']:pause()
+    if gBackgroundMusicOn then
+      gSounds['background']:pause()
+      gBackgroundMusicOn = false
+    else
+      gSounds['background']:play()
+      gBackgroundMusicOn = true
+    end
   end
   love.keyboard.keysPressed = {}
 end
