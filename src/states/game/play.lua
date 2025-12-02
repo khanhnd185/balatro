@@ -49,7 +49,7 @@ function PlayState:update(dt)
     if self.run.score>=self.run.tgt_score then
       self.run:win()
       gStateStack:pop()
-      gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
+      gStateStack:push(RunInfoState(gStateStack.states[#gStateStack.states],true))
     elseif self.run.hand==0 then
       self.run:lose()
       gStateStack:pop()
@@ -75,7 +75,7 @@ function PlayState:update(dt)
     end
     self:point()
   elseif love.keyboard.wasPressed('q') then
-    gStateStack:push(RunInfoState(gStateStack.states[#gStateStack.states],false))
+    gStateStack:push(RunInfoState(gStateStack.states[1],false))
   elseif love.keyboard.wasPressed('e') then
     gStateStack:push(DeckInfoState(gStateStack.states[#gStateStack.states]))
   end

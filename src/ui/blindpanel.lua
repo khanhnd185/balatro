@@ -24,7 +24,7 @@ function BlindPanel:init(def)
   local box_h = 40
   self.skip_box = ShadowTextBox({
       x = self.x+(self.w-box_w)/2
-    , y = self.y+self.h-box_h-10
+    , y = self.y+self.h-box_h-50
     , w = box_w
     , h = 40
     , c1 = {r=25, g=25, b=25}
@@ -36,7 +36,7 @@ function BlindPanel:init(def)
   })
   self.play_box = ShadowTextBox({
       x = self.x+(self.w-box_w)/2
-    , y = self.y+self.h-2*box_h-18
+    , y = self.y+self.h-2*box_h-58
     , w = box_w
     , h = 40
     , c1 = {r=25, g=25, b=25}
@@ -46,6 +46,7 @@ function BlindPanel:init(def)
     , dx = 4
     , dy = 4
   })
+  self.reward = math.random(10)
 end
 
 function BlindPanel:render()
@@ -68,4 +69,12 @@ function BlindPanel:render()
     self.play_box:render('Play (z)')
     self.skip_box:render('Skip (x)')
   end
+
+  local s = "Get a Joker"
+  if self.reward<10 then
+    s = "Upgrade " .. HAND_TYPE[self.reward]
+  end
+  love.graphics.setColor(1,1,1,1)
+  love.graphics.setFont(gFonts['xmedium'])
+  love.graphics.printf(s, self.x+self.dx, self.y+self.h-32,self.w-2*self.dx,'left')
 end

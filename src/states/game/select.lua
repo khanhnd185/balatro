@@ -74,8 +74,13 @@ function SelectState:update(dt)
     gStateStack:pop()
     gStateStack:push(PlayState(gStateStack.states[#gStateStack.states]))
   elseif love.keyboard.wasPressed('x') then
-    self.run:skip()
-    gStateStack:push(RunInfoState(gStateStack.states[#gStateStack.states],true))
+    local reward = self.small_blind.reward
+    if self.run.blind==BLIND_BIG then
+      reward = self.big_blind.reward
+    elseif self.run.blind==BLIND_BOSS then
+      reward = self.big_blind.reward
+    end
+    self.run:skip(reward)
   end
 end
 

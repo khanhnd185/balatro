@@ -4,8 +4,8 @@ function RunState:init()
   self:lose()
 
   self.jokers = {
-      Joker({id=JOKER_RED,run=self})
-    , Joker({id=JOKER_BLACK,run=self})
+    --   Joker({id=JOKER_RED,run=self})
+    -- , Joker({id=JOKER_BLACK,run=self})
   }
   self.jokerslot = JokerSlot({
       x=320
@@ -436,11 +436,18 @@ function RunState:pass()
   self.tgt_score  = ANTE_BASE[self.ante]*BLIND_MULT[self.blind]
 end
 
-function RunState:skip()
+function RunState:skip(reward)
   self:pass()
   self:reset()
 
   -- reward for skipping
+  if reward<10 then
+    self:upgrade(reward)
+  else
+    if #self.jokers<5 then
+      table.insert(self.jokers,Joker({id=math.random(2),run=self}))
+    end
+  end
 end
 
 function RunState:win()

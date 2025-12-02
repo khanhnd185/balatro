@@ -1,7 +1,7 @@
 RunInfoState = Class{__includes = BaseState}
 
-function RunInfoState:init(play, upgrade)
-  self.run = play.run
+function RunInfoState:init(run, upgrade)
+  self.run = run
   local x = 384
   local y = 40
   self.window  = ShadowTextBox({
@@ -130,6 +130,7 @@ function RunInfoState:update(dt)
   elseif self.pointer and love.keyboard.wasPressed('z') then
     self.run:upgrade(self.pointer.pos)
     gStateStack:pop()
+    gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
   end
 end
 
