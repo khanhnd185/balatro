@@ -49,11 +49,29 @@ function PlayState:update(dt)
     if self.run.score>=self.run.tgt_score then
       self.run:win()
       gStateStack:pop()
-      gStateStack:push(RunInfoState(gStateStack.states[#gStateStack.states],true))
+      gStateStack:push(MessageState({
+          msg = 'Nice!'
+        , yes = 'OK(z)'
+        , x = 575
+        , y = 300
+        , w = 300
+        , h = 200
+        , c = {r=0, g=129, b=211}
+        , next_state = RunInfoState(gStateStack.states[#gStateStack.states],true)
+      }))
     elseif self.run.hand==0 then
       self.run:lose()
       gStateStack:pop()
       gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
+      gStateStack:push(MessageState({
+          msg = 'Try again!'
+        , yes = 'OK(z)'
+        , x = 575
+        , y = 300
+        , w = 300
+        , h = 200
+        , c = {r=0, g=129, b=211}
+      }))
     else
       self.hand:play()
       self.hand:reset()
