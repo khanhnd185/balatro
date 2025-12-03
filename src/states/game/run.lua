@@ -450,6 +450,11 @@ function RunState:skip(reward)
   end
 end
 
+function RunState:buy(joker)
+  table.insert(self.jokers,joker)
+  self.money = self.money-joker.price
+end
+
 function RunState:win()
   self:pass()
   self:reset()

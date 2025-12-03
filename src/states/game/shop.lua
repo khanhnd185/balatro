@@ -78,9 +78,21 @@ function ShopState:update(dt)
   elseif self.pointer and love.keyboard.wasPressed('d') then
     self.pointer:right()
   elseif self.pointer and love.keyboard.wasPressed('z') then
-    table.insert(self.run.jokers, self.jokers[self.pointer.pos])
-    gStateStack:pop()
-    gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
+    if self.run.money<self.jokers[self.pointer.pos].price then
+      gStateStack:push(MessageState({
+          msg = 'Ur broke!'
+        , yes = 'OK(z)'
+        , x = 575
+        , y = 300
+        , w = 300
+        , h = 200
+        , c = {r=0, g=129, b=211}
+      }))
+    else
+      self.run:buy(self.jokers[self.pointer.pos])
+      gStateStack:pop()
+      gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
+    end
   end
 end
 
