@@ -72,7 +72,7 @@ function BlindPanel:render()
 
   local s = "Get a Joker"
   if self.reward<10 then
-    s = "Upgrade " .. HAND_TYPE[self.reward]
+    s = "lvl up " .. HAND_TYPE[self.reward]
   end
   love.graphics.setColor(1,1,1,1)
   love.graphics.setFont(gFonts['xmedium'])

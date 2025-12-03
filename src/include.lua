@@ -86,7 +86,7 @@ HAND_TYPE = {
   , "Flush"
   , "Full house"
   , "A Four"
-  , "Strght flush"
+  , "Strate flush"
 }
 
 -- type-based score

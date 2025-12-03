@@ -51,6 +51,14 @@ function PlayState:update(dt)
       gSounds.win:play()
       self.run:win()
       gStateStack:pop()
+
+      -- reward
+      local next_state
+      if math.random()>0.7 then
+        next_state = RunInfoState(gStateStack.states[1],true)
+      else
+        next_state = ShopState(gStateStack.states[1],2)
+      end
       gStateStack:push(MessageState({
           msg = 'Nice!'
         , yes = 'OK(z)'
@@ -59,8 +67,7 @@ function PlayState:update(dt)
         , w = 300
         , h = 200
         , c = {r=0, g=129, b=211}
-        -- , next_state = RunInfoState(gStateStack.states[#gStateStack.states],true)
-        , next_state = ShopState(gStateStack.states[1],2)
+        , next_state = next_state
       }))
     elseif self.run.hand==0 then
       gSounds.lose:play()

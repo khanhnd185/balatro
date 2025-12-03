@@ -455,13 +455,24 @@ function RunState:buy(joker)
   self.money = self.money-joker.price
 end
 
+function RunState:earn()
+  local earn = 3
+  if self.blind==BLIND_BIG then
+    earn = 4
+  elseif self.blind==BLIND_BOSS then
+    earn = 5
+  end
+  local interest = math.floor(self.money/5)
+  self.money = self.money+earn+interest
+end
+
+
 function RunState:win()
+  self.round = self.round+1
+
+  self:earn()
   self:pass()
   self:reset()
-
-  -- reward for winning
-  self.money = self.money+10
-  self.round = self.round+1
 end
 
 function RunState:lose()
