@@ -57,7 +57,8 @@ function PlayState:update(dt)
         , w = 300
         , h = 200
         , c = {r=0, g=129, b=211}
-        , next_state = RunInfoState(gStateStack.states[#gStateStack.states],true)
+        -- , next_state = RunInfoState(gStateStack.states[#gStateStack.states],true)
+        , next_state = ShopState(gStateStack.states[#gStateStack.states],2)
       }))
     elseif self.run.hand==0 then
       self.run:lose()

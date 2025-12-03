@@ -20,6 +20,7 @@ require 'src/states/game/run'
 require 'src/states/game/run_info'
 require 'src/states/game/deck_info'
 require 'src/states/game/message'
+require 'src/states/game/shop'
 
 require 'src/entity/card'
 require 'src/entity/hand'
