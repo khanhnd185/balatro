@@ -42,11 +42,13 @@ function PlayState:update(dt)
   elseif love.keyboard.wasPressed('a') then
     self.hand:moveLeft()
   elseif love.keyboard.wasPressed('space') then
+    gSounds.card:play()
     self.run.type = self.hand:select(self.run.type)
     self.run:update()
   elseif love.keyboard.wasPressed('z') and self.run.type>0 and self.run.hand>0 then
     self.run:play()
     if self.run.score>=self.run.tgt_score then
+      gSounds.win:play()
       self.run:win()
       gStateStack:pop()
       gStateStack:push(MessageState({
@@ -61,6 +63,7 @@ function PlayState:update(dt)
         , next_state = ShopState(gStateStack.states[1],2)
       }))
     elseif self.run.hand==0 then
+      gSounds.lose:play()
       self.run:lose()
       gStateStack:pop()
       gStateStack:push(MessageState({
@@ -74,6 +77,7 @@ function PlayState:update(dt)
         , next_state = SelectState(gStateStack.states[1])
       }))
     else
+      gSounds.play:play()
       self.hand:play()
       self.hand:reset()
       for i=1,(self.ncards-#self.hand.hand) do
@@ -82,6 +86,7 @@ function PlayState:update(dt)
       self:point()
     end
   elseif love.keyboard.wasPressed('x') and self.run.type>0  and self.run.discard>0 then
+    gSounds.discard:play()
     self.run.discard = self.run.discard-1
     self.run.base    = 0
     self.run.mult    = 0

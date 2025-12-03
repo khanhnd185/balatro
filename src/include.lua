@@ -135,5 +135,10 @@ CARD_SELECT = 4
 
 -- music
 gSounds = {
-  ['background'] = love.audio.newSource('assets/sounds/a-lonely-cherry-tree.mp3', 'static'),
+  ['background'] = love.audio.newSource('assets/sounds/background.mp3', 'static'),
+  ['card'] = love.audio.newSource('assets/sounds/card.ogg', 'static'),
+  ['discard'] = love.audio.newSource('assets/sounds/discard.ogg', 'static'),
+  ['play'] = love.audio.newSource('assets/sounds/play.ogg', 'static'),
+  ['win'] = love.audio.newSource('assets/sounds/win.ogg', 'static'),
+  ['lose'] = love.audio.newSource('assets/sounds/lose.ogg', 'static'),
 }
