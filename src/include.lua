@@ -9,6 +9,7 @@ require 'src/ui/pointer'
 require 'src/ui/textbox'
 require 'src/ui/blindpanel'
 require 'src/ui/jokerslot'
+require 'src/ui/text'
 
 require 'src/statemachine'
 require 'src/states/basestate'

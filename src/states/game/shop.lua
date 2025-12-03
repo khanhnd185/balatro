@@ -51,12 +51,19 @@ function ShopState:init(run, n)
   local x = 100
   local y = 120
   self.jokers = {}
+  self.pricetags = {}
   for i=1,n do
     table.insert(self.jokers, Joker({
         id=math.random(2)
       , run=run
       , x=X+x+(i-1)*dx
       , y=Y+y
+    }))
+    table.insert(self.pricetags, Text({
+        x = X+x+(i-1)*dx+CARDW/2-12
+      , y = Y+y+CARDH+8
+      , c = {r=245, g=166, b=0}
+      , size = 'xmedium'
     }))
   end
   self.pointer = HorizontalPointer({
@@ -91,7 +98,7 @@ function ShopState:update(dt)
     else
       self.run:buy(self.jokers[self.pointer.pos])
       gStateStack:pop()
-      gStateStack:push(SelectState(gStateStack.states[#gStateStack.states]))
+      gStateStack:push(SelectState(gStateStack.states[1]))
     end
   end
 end
@@ -106,6 +113,7 @@ function ShopState:render()
   end
   for i=1,#self.jokers do
     self.jokers[i]:render()
+    self.pricetags[i]:render('$' .. tostring(self.jokers[i].price))
   end
   self.back_box:render('Back (x)')
 end
