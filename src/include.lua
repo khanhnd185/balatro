@@ -22,6 +22,7 @@ require 'src/states/game/run_info'
 require 'src/states/game/deck_info'
 require 'src/states/game/message'
 require 'src/states/game/shop'
+require 'src/states/game/control'
 
 require 'src/entity/card'
 require 'src/entity/hand'
@@ -74,6 +75,7 @@ gFonts = {
   , ['xmedium'] = love.graphics.newFont('assets/fonts/font.ttf', 24)
   , ['large'] = love.graphics.newFont('assets/fonts/font.ttf', 32)
   , ['xlarge'] = love.graphics.newFont('assets/fonts/font.ttf', 48)
+  , ['title'] = love.graphics.newFont('assets/fonts/font.ttf', 80)
 }
 
 -- hand type string

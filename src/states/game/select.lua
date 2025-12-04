@@ -73,6 +73,12 @@ function SelectState:update(dt)
   if love.keyboard.wasPressed('z') then
     gStateStack:pop()
     gStateStack:push(PlayState(gStateStack.states[#gStateStack.states]))
+  elseif love.keyboard.wasPressed('q') then
+    gStateStack:push(RunInfoState(gStateStack.states[1],false))
+  elseif love.keyboard.wasPressed('e') then
+    gStateStack:push(DeckInfoState(gStateStack.states[1]))
+  elseif love.keyboard.wasPressed('c') then
+    gStateStack:push(ControlState())
   elseif love.keyboard.wasPressed('x') then
     local reward = self.small_blind.reward
     if self.run.blind==BLIND_BIG then

@@ -246,7 +246,7 @@ function RunState:init()
   -- Run info
   self.run_box  = ShadowTextBox({
       x = x+18
-    , y = y+474
+    , y = y+465
     , w = 72
     , h = 80
     , c1 = {r=25, g=25, b=25}
@@ -271,130 +271,20 @@ function RunState:init()
     , dy = 12
   })
 
+  self.ctl_box  = ShadowTextBox({
+    x = x+18
+  , y = y+560
+  , w = 72
+  , h = 80
+  , c1 = {r=25, g=25, b=25}
+  , c2 = {r=214, g=107, b=27}
+  , c3 = {r=255, g=255, b=255}
+  , size = 'medium'
+  , dx = 2
+  , dy = 12
+})
 
   -- instruction
-  y = y+600
-  x = x+112
-  self.but_q = ShadowTextBox({
-      x = x
-    , y = y
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_w = ShadowTextBox({
-      x = x+40
-    , y = y
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_e = ShadowTextBox({
-      x = x+80
-    , y = y
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_a = ShadowTextBox({
-      x = x
-    , y = y+40
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_s = ShadowTextBox({
-      x = x+40
-    , y = y+40
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_d = ShadowTextBox({
-      x = x+80
-    , y = y+40
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_z = ShadowTextBox({
-      x = x
-    , y = y+80
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_x = ShadowTextBox({
-      x = x+40
-    , y = y+80
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_c = ShadowTextBox({
-      x = x+80
-    , y = y+80
-    , w = 32
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
-  self.but_space = ShadowTextBox({
-      x = x
-    , y = y+120
-    , w = 112
-    , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
-    , size = 'medium'
-    , dx = 2
-    , dy = 2
-  })
 end
 
 function RunState:update()
@@ -538,18 +428,7 @@ function RunState:render()
   -- render run info
   self.run_box:render('Run Info (Q)')
   self.opt_box:render('Deck Info (E)')
-
-  -- render button
-  -- self.but_q:render('q')
-  -- self.but_w:render('w')
-  -- self.but_e:render('e')
-  -- self.but_a:render('a')
-  -- self.but_s:render('s')
-  -- self.but_d:render('d')
-  -- self.but_z:render('z')
-  -- self.but_x:render('x')
-  -- self.but_c:render('c')
-  -- self.but_space:render('space')
+  self.ctl_box:render('Control (C)')
 
   -- render joker slot
   self.jokerslot:render(self.jokers)

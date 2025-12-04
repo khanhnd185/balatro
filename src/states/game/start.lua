@@ -18,6 +18,8 @@ end
 
 function StartState:render()
   love.graphics.setColor(1,1,1,1)
+  love.graphics.setFont(gFonts['title'])
+  love.graphics.printf('Moon Card',0,VH/2-32,VW,'center')
   love.graphics.setFont(gFonts['xlarge'])
   love.graphics.printf('Press P to Play',0,VH-64,VW,'center')
   love.graphics.setFont(gFonts['medium'])
