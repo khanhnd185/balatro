@@ -123,9 +123,9 @@ end
 function RunInfoState:update(dt)
   if love.keyboard.wasPressed('x') then
     gStateStack:pop()
-  elseif self.pointer and love.keyboard.wasPressed('w') then
+  elseif love.keyboard.wasPressed('w') and self.pointer and self.pointer.pos>1 then
     self.pointer:up()
-  elseif self.pointer and love.keyboard.wasPressed('s') then
+  elseif love.keyboard.wasPressed('s') and self.pointer and self.pointer.pos<#HAND_TYPE then
     self.pointer:down()
   elseif self.pointer and love.keyboard.wasPressed('z') then
     self.run:upgrade(self.pointer.pos)

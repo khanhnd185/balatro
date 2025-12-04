@@ -80,9 +80,9 @@ end
 function ShopState:update(dt)
   if love.keyboard.wasPressed('x') then
     gStateStack:pop()
-  elseif self.pointer and love.keyboard.wasPressed('a') then
+  elseif love.keyboard.wasPressed('a') and self.pointer and self.pointer.pos>1 then
     self.pointer:left()
-  elseif self.pointer and love.keyboard.wasPressed('d') then
+  elseif love.keyboard.wasPressed('d') and self.pointer and self.pointer.pos<#self.jokers then
     self.pointer:right()
   elseif self.pointer and love.keyboard.wasPressed('z') then
     if self.run.money<self.jokers[self.pointer.pos].price then

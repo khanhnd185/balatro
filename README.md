@@ -2,6 +2,7 @@
 
 ## About
 I implement Balatro, my favorite game, using [Love2d](https://love2d.org/).
+You can play my game at my [itch.io site](https://khanhnd185.itch.io/moon-card)
 
 
 ## Credit:
