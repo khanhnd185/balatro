@@ -18,6 +18,7 @@ function BlindPanel:init(def)
   self.r    = 8
   self.stat = def.stat
   self.score = def.score
+  self.reward = def.reward
 
 
   local box_w = 128
@@ -46,7 +47,6 @@ function BlindPanel:init(def)
     , dx = 4
     , dy = 4
   })
-  self.reward = math.random(10)
 end
 
 function BlindPanel:render()

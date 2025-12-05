@@ -80,6 +80,7 @@ end
 function ShopState:update(dt)
   if love.keyboard.wasPressed('x') then
     gStateStack:pop()
+    gStateStack:push(SelectState(gStateStack.states[1]))
   elseif love.keyboard.wasPressed('a') and self.pointer and self.pointer.pos>1 then
     self.pointer:left()
   elseif love.keyboard.wasPressed('d') and self.pointer and self.pointer.pos<#self.jokers then
