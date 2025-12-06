@@ -87,6 +87,13 @@ function HorizontalPointer:reset()
   }
 end
 
+function HorizontalPointer:set(pos)
+  self.pos = pos
+  self.vertices[1] = self.init_x+self.dx*(pos-1)
+  self.vertices[3] = self.init_x-self.size/2+self.dx*(pos-1)
+  self.vertices[5] = self.init_x+self.size/2+self.dx*(pos-1)
+end
+
 function HorizontalPointer:left()
   self.vertices[1] = self.vertices[1]-self.dx
   self.vertices[3] = self.vertices[3]-self.dx

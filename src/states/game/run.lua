@@ -2,11 +2,6 @@ RunState = Class{__includes = BaseState}
 
 function RunState:init()
   self:lose()
-  self.rewards = {
-      math.random(10) -- small_blind reward
-    , math.random(10) -- big blind reward
-    , math.random(10) -- boss blind reward
-  }
 
   self.jokers = {
     --   Joker({id=JOKER_RED,run=self})
@@ -327,6 +322,11 @@ function RunState:pass()
   else
     self.blind = BLIND_SMALL
     self.ante  = self.ante+1
+    self.rewards = {
+        math.random(10) -- small_blind reward
+      , math.random(10) -- big blind reward
+      , math.random(10) -- boss blind reward
+    }
   end
   self.tgt_score  = ANTE_BASE[self.ante]*BLIND_MULT[self.blind]
 end
@@ -338,7 +338,7 @@ function RunState:skip(reward)
   -- reward for skipping
   if reward<10 then
     self:upgrade(reward)
-  elseif #self.jokers<5 then
+  elseif #self.jokers<MAX_N_JOKER then
     table.insert(self.jokers,Joker({id=math.random(2),run=self}))
   end
 end
@@ -377,6 +377,11 @@ function RunState:lose()
   self.tgt_score  = ANTE_BASE[self.ante]*BLIND_MULT[self.blind]
   self.jokers     = {}
   self.scores     = {}
+  self.rewards = {
+      math.random(10) -- small_blind reward
+    , math.random(10) -- big blind reward
+    , math.random(10) -- boss blind reward
+  }
   for i=1,#gInitScores do
     table.insert(self.scores, {
         base=gInitScores[i].base

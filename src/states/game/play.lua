@@ -5,8 +5,16 @@ function PlayState:init(run)
   self.run    = run
   self.deck   = Deck()
   self.perm   = self:shuffle()
-  self.ncards = 8
+  self.ncards = N_CARD_HAND
   self.hand   = Hand(self.ncards)
+  self.pointer = HorizontalPointer({
+      x     = VW/6+1.5*CARDW+10
+    , y     = VH-1.5*CARDH-40
+    , dx    = CARDW+10
+    , dy    = 0
+    , size  = 24
+    , color = {r=79, g=99, b=103}
+  })
 
   for i=1,self.ncards do
     self:draw()
@@ -54,7 +62,7 @@ function PlayState:update(dt)
 
       -- reward
       local next_state
-      if math.random()>0.7 then
+      if math.random()>UPGRADE_HAND_PERCENT then
         next_state = RunInfoState(gStateStack.states[1],true)
       else
         next_state = ShopState(gStateStack.states[1],2)
@@ -132,5 +140,9 @@ function PlayState:render()
   end
 
   -- render deck
-  love.graphics.draw(gCardCoverSheet,gCardCover[COVER_BACK],VH-30, VW-30)
+  -- love.graphics.draw(gCardCoverSheet,gCardCover[COVER_BACK],VH-30, VW-30)
+
+  -- render pointer
+  self.pointer:set(self.hand.i)
+  self.pointer:render()
 end

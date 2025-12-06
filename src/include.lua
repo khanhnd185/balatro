@@ -144,3 +144,7 @@ gSounds = {
   ['win'] = love.audio.newSource('assets/sounds/win.ogg', 'static'),
   ['lose'] = love.audio.newSource('assets/sounds/lose.ogg', 'static'),
 }
+
+N_CARD_HAND = 8
+MAX_N_JOKER = 5
+UPGRADE_HAND_PERCENT = 0.7

@@ -4,12 +4,18 @@ JOKER_RED   = 1
 JOKER_BLACK = 2
 JOKER_PRICE = 6
 
+JOKER_DESC  = {
+  "Add 5 to MULT",
+  "Add 20 to BASE"
+}
+
 function Joker:init(def)
   self.id   = def.id
   self.run  = def.run
   if def.x then self.x=def.x else self.x=0 end
   if def.y then self.y=def.y else self.y=0 end
   self.price = JOKER_PRICE
+  self.desc = JOKER_DESC[self.id]
 end
 
 function Joker:render_at(x,y)

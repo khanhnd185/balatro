@@ -74,6 +74,13 @@ function ShopState:init(run, n)
     , size  = 24
     , color = {r=79, g=99, b=103}
   })
+  self.desc = Text({
+    x = X+dx
+  , y = Y+y+CARDH+64
+  , c = {r=25, g=25, b=25}
+  , size = 'xmedium'
+  , w = 400
+})
 
 end
 
@@ -109,6 +116,7 @@ function ShopState:render()
     self.window:render('Shop')
     self.pointer:render()
     self.sel_box:render('Select (z)')
+    self.desc:render(self.jokers[self.pointer.pos].desc)
   else
     self.window:render('Run Info')
   end
