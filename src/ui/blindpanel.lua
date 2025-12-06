@@ -19,6 +19,7 @@ function BlindPanel:init(def)
   self.stat = def.stat
   self.score = def.score
   self.reward = def.reward
+  self.can_skip = def.can_skip
 
 
   local box_w = 128
@@ -67,14 +68,18 @@ function BlindPanel:render()
 
   if self.stat==STAT_POINTED then
     self.play_box:render('Play (z)')
-    self.skip_box:render('Skip (x)')
+    if self.can_skip then
+      self.skip_box:render('Skip (x)')
+    end
   end
 
-  local s = "Get a Joker"
-  if self.reward<10 then
-    s = "lvl up " .. HAND_TYPE[self.reward]
+  if self.can_skip then
+    local s = "Get a Joker"
+    if self.reward<10 then
+      s = "lvl up " .. HAND_TYPE[self.reward]
+    end
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setFont(gFonts['xmedium'])
+    love.graphics.printf(s, self.x+self.dx, self.y+self.h-32,self.w-2*self.dx,'left')
   end
-  love.graphics.setColor(1,1,1,1)
-  love.graphics.setFont(gFonts['xmedium'])
-  love.graphics.printf(s, self.x+self.dx, self.y+self.h-32,self.w-2*self.dx,'left')
 end

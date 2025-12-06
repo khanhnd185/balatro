@@ -25,8 +25,11 @@ function Card:render(x,y)
   else
     -- love.graphics.printf(tostring(self.rank), x, y-40, 50, 'left')
     -- love.graphics.printf(tostring(self.suit), x, y-20, 50, 'left')
-    love.graphics.draw(gCardCoverSheet,self.skin,x,y)
+    -- love.graphics.draw(gCardCoverSheet,self.skin,x,y)
     love.graphics.draw(gCardSheet,self.front,x,y)
+    if self.state==CARD_SELECT then
+      love.graphics.draw(gCardCoverSheet,gCardCover[COVER_SELECT],x,y)
+    end
   end
   love.graphics.setColor(1, 1, 1, 1)
 end

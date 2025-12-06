@@ -57,26 +57,41 @@ function PlayState:update(dt)
     self.run:play()
     if self.run.score>=self.run.tgt_score then
       gSounds.win:play()
-      self.run:win()
-      gStateStack:pop()
 
-      -- reward
-      local next_state
-      if math.random()>UPGRADE_HAND_PERCENT then
-        next_state = RunInfoState(gStateStack.states[1],true)
+      if self.run.ante>=#ANTE_BASE then
+        -- end game
+        self.run:lose()
+        gStateStack:pop()
+        gStateStack:push(MessageState({
+            msg = 'You win!'
+          , yes = 'OK(z)'
+          , x = 575
+          , y = 300
+          , w = 300
+          , h = 200
+          , c = {r=0, g=129, b=211}
+          , next_state = SelectState(gStateStack.states[1])
+        }))
       else
-        next_state = ShopState(gStateStack.states[1],2)
+        self.run:win()
+        gStateStack:pop()
+        local next_state
+        if math.random()>UPGRADE_HAND_PERCENT then
+          next_state = RunInfoState(gStateStack.states[1],true)
+        else
+          next_state = ShopState(gStateStack.states[1],2)
+        end
+        gStateStack:push(MessageState({
+            msg = 'Nice!'
+          , yes = 'OK(z)'
+          , x = 575
+          , y = 300
+          , w = 300
+          , h = 200
+          , c = {r=0, g=129, b=211}
+          , next_state = next_state
+        }))
       end
-      gStateStack:push(MessageState({
-          msg = 'Nice!'
-        , yes = 'OK(z)'
-        , x = 575
-        , y = 300
-        , w = 300
-        , h = 200
-        , c = {r=0, g=129, b=211}
-        , next_state = next_state
-      }))
     elseif self.run.hand==0 then
       gSounds.lose:play()
       self.run:lose()

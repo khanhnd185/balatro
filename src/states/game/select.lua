@@ -21,6 +21,7 @@ function SelectState:init(run)
     , stat = STAT_CREATED
     , score = ANTE_BASE[self.run.ante]*BLIND_MULT[BLIND_SMALL]
     , reward = run.rewards[BLIND_SMALL]
+    , can_skip = true
   })
 
   x = x+280
@@ -38,6 +39,7 @@ function SelectState:init(run)
     , stat = STAT_CREATED
     , score = ANTE_BASE[self.run.ante]*BLIND_MULT[BLIND_BIG]
     , reward = run.rewards[BLIND_BIG]
+    , can_skip = true
   })
 
   x = x+280
@@ -55,6 +57,7 @@ function SelectState:init(run)
     , stat = STAT_CREATED
     , score = ANTE_BASE[self.run.ante]*BLIND_MULT[BLIND_BOSS]
     , reward = run.rewards[BLIND_BOSS]
+    , can_skip = false
   })
   self:sync()
 end
@@ -90,11 +93,9 @@ function SelectState:update(dt)
     gStateStack:push(RunInfoState(gStateStack.states[1],false))
   elseif love.keyboard.wasPressed('c') then
     gStateStack:push(ControlState())
-  elseif love.keyboard.wasPressed('x') then
+  elseif love.keyboard.wasPressed('x') and self.run.blind<BLIND_BOSS then
     local reward = self.small_blind.reward
     if self.run.blind==BLIND_BIG then
-      reward = self.big_blind.reward
-    elseif self.run.blind==BLIND_BOSS then
       reward = self.big_blind.reward
     end
     self.run:skip(reward)

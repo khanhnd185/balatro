@@ -42,8 +42,10 @@ gCardJoker  = GenerateQuads(gCardJokerSheet,CARDW,CARDH)
 gCardCover  = GenerateQuads(gCardCoverSheet,CARDW,CARDH)
 gCard       = GenerateQuads(gCardSheet,CARDW,CARDH)
 
-COVER_BACK  = 1
-COVER_FRONT = 2
+COVER_BACK    = 1
+COVER_FRONT   = 7
+COVER_SELECT  = 8
+
 -- rank enum
 RANK2 = 1
 RANK3 = 2
