@@ -11,10 +11,9 @@ function ControlState:init()
     , y = Y
     , w = W
     , h = H
-    , c1 = {r=25, g=25, b=25}
-    -- , c2 = {r=94, g=121, b=119}
-    , c2 = {r=113, g=141, b=191}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.THEME4
+    , c3 = COLOR.ABSWHITE
     , size = 'large'
     , dx = 80
     , dy = 8
@@ -27,9 +26,9 @@ function ControlState:init()
     , y = Y+H-h-8
     , w = w
     , h = h
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=234, g=150, b=0}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.ORANGE
+    , c3 = COLOR.ABSWHITE
     , size = 'xmedium'
     , dx = 4
     , dy = 4
@@ -43,9 +42,9 @@ function ControlState:init()
     , y = y
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -53,7 +52,7 @@ function ControlState:init()
   self.desc_q = Text({
       x = x+40
     , y = y+8
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -63,9 +62,9 @@ function ControlState:init()
     , y = y+40
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -73,7 +72,7 @@ function ControlState:init()
   self.desc_e = Text({
       x = x+40
     , y = y+48
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -83,9 +82,9 @@ function ControlState:init()
     , y = y+80
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -93,7 +92,7 @@ function ControlState:init()
   self.desc_w = Text({
       x = x+40
     , y = y+88
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -103,9 +102,9 @@ function ControlState:init()
     , y = y+120
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -113,7 +112,7 @@ function ControlState:init()
   self.desc_a = Text({
       x = x+40
     , y = y+128
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -123,9 +122,9 @@ function ControlState:init()
     , y = y+160
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -133,7 +132,7 @@ function ControlState:init()
   self.desc_s = Text({
       x = x+40
     , y = y+168
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -143,9 +142,9 @@ function ControlState:init()
     , y = y+200
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -153,7 +152,7 @@ function ControlState:init()
   self.desc_d = Text({
       x = x+40
     , y = y+208
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -163,9 +162,9 @@ function ControlState:init()
     , y = y+240
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -173,7 +172,7 @@ function ControlState:init()
   self.desc_z = Text({
       x = x+40
     , y = y+248
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -183,9 +182,9 @@ function ControlState:init()
     , y = y+280
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -193,7 +192,7 @@ function ControlState:init()
   self.desc_x = Text({
       x = x+40
     , y = y+288
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -203,9 +202,9 @@ function ControlState:init()
     , y = y+320
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -213,7 +212,7 @@ function ControlState:init()
   self.desc_c = Text({
       x = x+40
     , y = y+328
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -223,9 +222,9 @@ function ControlState:init()
     , y = y+360
     , w = 32
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -233,7 +232,7 @@ function ControlState:init()
   self.desc_m = Text({
       x = x+40
     , y = y+368
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })
@@ -243,9 +242,9 @@ function ControlState:init()
   , y = y+400
   , w = 40
   , h = 32
-  , c1 = {r=25, g=25, b=25}
-  , c2 = {r=166, g=166, b=166}
-  , c3 = {r=255, g=255, b=255}
+  , c1 = COLOR.SHADOW
+  , c2 = COLOR.GRAY
+  , c3 = COLOR.ABSWHITE
   , size = 'medium'
   , dx = 2
   , dy = 2
@@ -253,7 +252,7 @@ function ControlState:init()
 self.desc_esc = Text({
     x = x+48
   , y = y+408
-  , c = {r=25, g=25, b=25}
+  , c = COLOR.SHADOW
   , size = 'xmedium'
   , w = 400
 })
@@ -262,9 +261,9 @@ self.desc_esc = Text({
     , y = y+440
     , w = 112
     , h = 32
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=166, g=166, b=166}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.GRAY
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -272,7 +271,7 @@ self.desc_esc = Text({
   self.desc_space = Text({
       x = x+120
     , y = y+448
-    , c = {r=25, g=25, b=25}
+    , c = COLOR.SHADOW
     , size = 'xmedium'
     , w = 400
   })

@@ -9,10 +9,9 @@ function RunInfoState:init(run, upgrade)
     , y = y
     , w = 720
     , h = 640
-    , c1 = {r=25, g=25, b=25}
-    -- , c2 = {r=94, g=121, b=119}
-    , c2 = {r=113, g=141, b=191}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.THEME4
+    , c3 = COLOR.ABSWHITE
     , size = 'large'
     , dx = 80
     , dy = 8
@@ -28,7 +27,7 @@ function RunInfoState:init(run, upgrade)
       , dx    = 0
       , dy    = 48
       , size  = 32
-      , color = {r=79, g=99, b=103}
+      , color = COLOR.PALEGREEN
     })
   end
 
@@ -42,10 +41,9 @@ function RunInfoState:init(run, upgrade)
         , y = y
         , w = 512
         , h = 40
-        , c1 = {r=25, g=25, b=25}
-        -- , c2 = {r=188, g=188, b=188}
-        , c2 = {r=93, g=94, b=142}
-        , c3 = {r=255, g=255, b=255}
+        , c1 = COLOR.SHADOW
+        , c2 = COLOR.THEME5
+        , c3 = COLOR.ABSWHITE
         , size = 'xmedium'
         , dx = 32
         , dy = 4
@@ -56,9 +54,9 @@ function RunInfoState:init(run, upgrade)
         , y = y+4
         , w = 64
         , h = 32
-        , c1 = {r=25, g=25, b=25}
-        , c2 = {r=0, g=156, b=253}
-        , c3 = {r=255, g=255, b=255}
+        , c1 = COLOR.SHADOW
+        , c2 = COLOR.BLUE
+        , c3 = COLOR.ABSWHITE
         , size = 'xmedium'
         , dx = 3
         , dy = 3
@@ -69,9 +67,9 @@ function RunInfoState:init(run, upgrade)
         , y = y+4
         , w = 64
         , h = 32
-        , c1 = {r=25, g=25, b=25}
-        , c2 = {r=236, g=45, b=51}
-        , c3 = {r=255, g=255, b=255}
+        , c1 = COLOR.SHADOW
+        , c2 = COLOR.RED
+        , c3 = COLOR.ABSWHITE
         , size = 'xmedium'
         , dx = 3
         , dy = 3
@@ -82,9 +80,9 @@ function RunInfoState:init(run, upgrade)
         , y = y+4
         , w = 96
         , h = 32
-        , c1 = {r=25, g=25, b=25}
-        , c2 = {r=137, g=154, b=209}
-        , c3 = {r=255, g=255, b=255}
+        , c1 = COLOR.SHADOW
+        , c2 = COLOR.THEME6
+        , c3 = COLOR.ABSWHITE
         , size = 'xmedium'
         , dx = 3
         , dy = 3
@@ -98,9 +96,9 @@ function RunInfoState:init(run, upgrade)
       , y = y+16
       , w = 140
       , h = 40
-      , c1 = {r=25, g=25, b=25}
-      , c2 = {r=234, g=150, b=0}
-      , c3 = {r=255, g=255, b=255}
+      , c1 = COLOR.SHADOW
+      , c2 = COLOR.ORANGE
+      , c3 = COLOR.ABSWHITE
       , size = 'xmedium'
       , dx = 4
       , dy = 4
@@ -111,9 +109,9 @@ function RunInfoState:init(run, upgrade)
     , y = y+64
     , w = 140
     , h = 40
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=234, g=150, b=0}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.ORANGE
+    , c3 = COLOR.ABSWHITE
     , size = 'xmedium'
     , dx = 4
     , dy = 4

@@ -11,10 +11,9 @@ function ShopState:init(run, n)
     , y = Y
     , w = W
     , h = H
-    , c1 = {r=25, g=25, b=25}
-    -- , c2 = {r=94, g=121, b=119}
-    , c2 = {r=113, g=141, b=191}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.THEME4
+    , c3 = COLOR.ABSWHITE
     , size = 'large'
     , dx = 80
     , dy = 8
@@ -27,9 +26,9 @@ function ShopState:init(run, n)
     , y = Y+H-h*2-16
     , w = w
     , h = h
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=234, g=150, b=0}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.ORANGE
+    , c3 = COLOR.ABSWHITE
     , size = 'xmedium'
     , dx = 4
     , dy = 4
@@ -39,9 +38,9 @@ function ShopState:init(run, n)
     , y = Y+H-h-8
     , w = w
     , h = h
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=234, g=150, b=0}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.ORANGE
+    , c3 = COLOR.ABSWHITE
     , size = 'xmedium'
     , dx = 4
     , dy = 4
@@ -62,7 +61,7 @@ function ShopState:init(run, n)
     table.insert(self.pricetags, Text({
         x = X+x+(i-1)*dx+CARDW/2-12
       , y = Y+y+CARDH+8
-      , c = {r=245, g=166, b=0}
+      , c = COLOR.YELLOW
       , size = 'xmedium'
     }))
   end
@@ -72,12 +71,12 @@ function ShopState:init(run, n)
     , dx    = dx
     , dy    = 0
     , size  = 24
-    , color = {r=79, g=99, b=103}
+    , color = COLOR.PALEGREEN
   })
   self.desc = Text({
     x = X+dx
   , y = Y+y+CARDH+64
-  , c = {r=25, g=25, b=25}
+  , c = COLOR.SHADOW
   , size = 'xmedium'
   , w = 400
 })
@@ -101,7 +100,17 @@ function ShopState:update(dt)
         , y = 300
         , w = 300
         , h = 200
-        , c = {r=0, g=129, b=211}
+        , c = COLOR.THEME1
+      }))
+    elseif #self.run.jokers>=MAX_N_JOKER then
+      gStateStack:push(MessageState({
+          msg = 'Ur full!'
+        , yes = 'OK(z)'
+        , x = 575
+        , y = 300
+        , w = 300
+        , h = 200
+        , c = COLOR.THEME1
       }))
     else
       self.run:buy(self.jokers[self.pointer.pos])

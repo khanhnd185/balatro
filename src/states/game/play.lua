@@ -13,7 +13,7 @@ function PlayState:init(run)
     , dx    = CARDW+10
     , dy    = 0
     , size  = 24
-    , color = {r=79, g=99, b=103}
+    , color = COLOR.PALEGREEN
   })
 
   for i=1,self.ncards do
@@ -69,7 +69,7 @@ function PlayState:update(dt)
           , y = 300
           , w = 300
           , h = 200
-          , c = {r=0, g=129, b=211}
+          , c = COLOR.THEME1
           , next_state = SelectState(gStateStack.states[1])
         }))
       else
@@ -88,7 +88,7 @@ function PlayState:update(dt)
           , y = 300
           , w = 300
           , h = 200
-          , c = {r=0, g=129, b=211}
+          , c = COLOR.THEME1
           , next_state = next_state
         }))
       end
@@ -103,7 +103,7 @@ function PlayState:update(dt)
         , y = 300
         , w = 300
         , h = 200
-        , c = {r=0, g=129, b=211}
+        , c = COLOR.THEME1
         , next_state = SelectState(gStateStack.states[1])
       }))
     else

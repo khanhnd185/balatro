@@ -4,6 +4,7 @@ push  = require 'lib/push'
 Timer = require 'lib/knife.timer'
 
 require 'src/util'
+require 'src/color'
 
 require 'src/ui/pointer'
 require 'src/ui/textbox'
@@ -127,7 +128,11 @@ BLIND_SMALL = 1
 BLIND_BIG   = 2
 BLIND_BOSS  = 3
 
-
+EARN = {
+    3 -- small earn
+  , 4 -- big earn
+  , 5 -- boss earn
+}
 
 -- card state
 CARD_UNUSED = 0
@@ -148,5 +153,5 @@ gSounds = {
 }
 
 N_CARD_HAND = 8
-MAX_N_JOKER = 5
+MAX_N_JOKER = 10
 UPGRADE_HAND_PERCENT = 0.7

@@ -12,9 +12,9 @@ function SelectState:init(run)
     , y = y
     , w = 256
     , h = 384
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=137, g=154, b=209}
-    , c3 = {r=51, g=68, b=97}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.THEME6
+    , c3 = COLOR.THEME2
     , size = 'xmedium'
     , dx = 8
     , dy = 4
@@ -22,6 +22,7 @@ function SelectState:init(run)
     , score = ANTE_BASE[self.run.ante]*BLIND_MULT[BLIND_SMALL]
     , reward = run.rewards[BLIND_SMALL]
     , can_skip = true
+    , earn = EARN[BLIND_SMALL]
   })
 
   x = x+280
@@ -30,9 +31,9 @@ function SelectState:init(run)
     , y = y
     , w = 256
     , h = 384
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=113, g=141, b=191}
-    , c3 = {r=51, g=68, b=97}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.THEME4
+    , c3 = COLOR.THEME2
     , size = 'xmedium'
     , dx = 8
     , dy = 4
@@ -40,6 +41,7 @@ function SelectState:init(run)
     , score = ANTE_BASE[self.run.ante]*BLIND_MULT[BLIND_BIG]
     , reward = run.rewards[BLIND_BIG]
     , can_skip = true
+    , earn = EARN[BLIND_BIG]
   })
 
   x = x+280
@@ -48,9 +50,9 @@ function SelectState:init(run)
     , y = y
     , w = 256
     , h = 384
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=93, g=94, b=142}
-    , c3 = {r=51, g=68, b=97}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.THEME5
+    , c3 = COLOR.THEME2
     , size = 'xmedium'
     , dx = 8
     , dy = 4
@@ -58,6 +60,7 @@ function SelectState:init(run)
     , score = ANTE_BASE[self.run.ante]*BLIND_MULT[BLIND_BOSS]
     , reward = run.rewards[BLIND_BOSS]
     , can_skip = false
+    , earn = EARN[BLIND_BOSS]
   })
   self:sync()
 end

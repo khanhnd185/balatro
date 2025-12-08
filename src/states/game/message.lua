@@ -15,9 +15,9 @@ function MessageState:init(def)
     , y = self.y
     , w = self.w
     , h = self.h
-    , c1 = {r=25, g=25, b=25}
+    , c1 = COLOR.SHADOW
     , c2 = self.c
-    , c3 = {r=255, g=255, b=255}
+    , c3 = COLOR.ABSWHITE
     , size = 'xlarge'
     , dx = 8
     , dy = 8
@@ -30,9 +30,9 @@ function MessageState:init(def)
     , y = self.y+self.h-h-8
     , w = w
     , h = h
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=234, g=150, b=0}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.ORANGE
+    , c3 = COLOR.ABSWHITE
     , size = 'xmedium'
     , dx = 4
     , dy = 4

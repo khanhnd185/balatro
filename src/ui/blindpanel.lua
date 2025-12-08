@@ -17,6 +17,7 @@ function BlindPanel:init(def)
   self.dy   = def.dy
   self.r    = 8
   self.stat = def.stat
+  self.earn = def.earn
   self.score = def.score
   self.reward = def.reward
   self.can_skip = def.can_skip
@@ -29,9 +30,9 @@ function BlindPanel:init(def)
     , y = self.y+self.h-box_h-50
     , w = box_w
     , h = 40
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=236, g=45, b=51}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.RED
+    , c3 = COLOR.ABSWHITE
     , size = 'xmedium'
     , dx = 4
     , dy = 4
@@ -41,30 +42,38 @@ function BlindPanel:init(def)
     , y = self.y+self.h-2*box_h-58
     , w = box_w
     , h = 40
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=0, g=156, b=253}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.BLUE
+    , c3 = COLOR.ABSWHITE
     , size = 'xmedium'
     , dx = 4
     , dy = 4
   })
+  self.earn_text = Text({
+      x = self.x+self.w/2-32
+    , y = self.y+self.h/2-32
+    , c = COLOR.YELLOW
+    , size = 'xlarge'
+    , w = 64
+  })
 end
 
 function BlindPanel:render()
-  local y = self.y
-
   love.graphics.setColor(self.c1.r/255,self.c1.g/255,self.c1.b/255,1)
-  love.graphics.rectangle("fill",self.x+4,y+4,self.w,self.h,self.r,self.r)
+  love.graphics.rectangle("fill",self.x+4,self.y+4,self.w,self.h,self.r,self.r)
   love.graphics.setColor(self.c2.r/255,self.c2.g/255,self.c2.b/255,1)
-  love.graphics.rectangle("fill",self.x,y,self.w,self.h,self.r,self.r)
+  love.graphics.rectangle("fill",self.x,self.y,self.w,self.h,self.r,self.r)
 
   love.graphics.setColor(1,1,1,1)
   love.graphics.setFont(gFonts[self.size])
-  love.graphics.printf('Score at least', self.x+self.dx*4, y+self.dy*2,self.w-2*self.dx,'left')
+  love.graphics.printf('Score at least', self.x+self.dx*4, self.y+self.dy*2,self.w-2*self.dx,'left')
+  love.graphics.printf('To get', self.x+self.w/2-32, self.y+self.h/2-64,self.w-2*self.dx,'left')
 
   love.graphics.setColor(self.c3.r/255,self.c3.g/255,self.c3.b/255,1)
   love.graphics.setFont(gFonts['xlarge'])
-  love.graphics.printf(tostring(self.score), self.x+72, y+40,self.w-64,'left')
+  love.graphics.printf(tostring(self.score), self.x+72, self.y+40,self.w-64,'left')
+
+  self.earn_text:render("$" .. tostring(self.earn))
 
   if self.stat==STAT_POINTED then
     self.play_box:render('Play (z)')

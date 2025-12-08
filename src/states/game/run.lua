@@ -12,7 +12,7 @@ function RunState:init()
     , y=16
     , w=512
     , h=160
-    , c={r=99, g=77, b=132}
+    , c=COLOR.PURPLE
   })
 
   local x = 20
@@ -23,9 +23,9 @@ function RunState:init()
     , y = 0
     , w = 256
     , h = VH
-    , c1 = {r=0, g=129, b=211}
-    , c2 = {r=51, g=68, b=97}
-    , c3 = {r=245, g=166, b=0}
+    , c1 = COLOR.THEME1
+    , c2 = COLOR.THEME2
+    , c3 = COLOR.YELLOW
     , size = 'large'
     , dx = 8
     , dy = 8
@@ -37,9 +37,9 @@ function RunState:init()
     , y = y+80
     , w = 220
     , h = 80
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=90, g=171, b=220}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.THEME3
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 12
     , dy = 2
@@ -49,9 +49,9 @@ function RunState:init()
     , y = y+100
     , w = 180
     , h = 40
-    , c1 = {r=90, g=171, b=220}
-    , c2 = {r=90, g=171, b=220}
-    , c3 = {r=51, g=68, b=97}
+    , c1 = COLOR.THEME3
+    , c2 = COLOR.THEME3
+    , c3 = COLOR.THEME2
     , size = 'xlarge'
     , dx = 10
     , dy = 2
@@ -64,9 +64,9 @@ function RunState:init()
     , y = y+172
     , w = 224
     , h = 56
-    , c1 = {r=0, g=129, b=211}
-    , c2 = {r=0, g=129, b=211}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.THEME1
+    , c2 = COLOR.THEME1
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 10
@@ -76,9 +76,9 @@ function RunState:init()
     , y = y+180
     , w = 156
     , h = 40
-    , c1 = {r=51, g=68, b=97}
-    , c2 = {r=51, g=68, b=97}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.THEME2
+    , c2 = COLOR.THEME2
+    , c3 = COLOR.ABSWHITE
     , size = 'large'
     , dx = 12
     , dy = 4
@@ -92,9 +92,9 @@ function RunState:init()
     , y = y+234
     , w = 224
     , h = 128
-    , c1 = {r=0, g=0, b=0}
-    , c2 = {r=0, g=0, b=0}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.ABSBLACK
+    , c2 = COLOR.ABSBLACK
+    , c3 = COLOR.ABSWHITE
     , size = 'large'
     , dx = 6
     , dy = 6
@@ -104,9 +104,9 @@ function RunState:init()
     , y = y+300
     , w = 96
     , h = 56
-    , c1 = {r=0, g=156, b=253}
-    , c2 = {r=0, g=156, b=253}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.BLUE
+    , c2 = COLOR.BLUE
+    , c3 = COLOR.ABSWHITE
     , size = 'large'
     , dx = 6
     , dy = 6
@@ -116,9 +116,9 @@ function RunState:init()
     , y = y+300
     , w = 96
     , h = 56
-    , c1 = {r=236, g=45, b=51}
-    , c2 = {r=236, g=45, b=51}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.RED
+    , c2 = COLOR.RED
+    , c3 = COLOR.ABSWHITE
     , size = 'large'
     , dx = 6
     , dy = 6
@@ -131,9 +131,9 @@ function RunState:init()
     , y = y+370
     , w = 64
     , h = 64
-    , c1 = {r=0, g=129, b=211}
-    , c2 = {r=0, g=129, b=211}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.THEME1
+    , c2 = COLOR.THEME1
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -143,9 +143,9 @@ function RunState:init()
     , y = y+390
     , w = 56
     , h = 40
-    , c1 = {r=51, g=68, b=97}
-    , c2 = {r=51, g=68, b=97}
-    , c3 = {r=0, g=156, b=253}
+    , c1 = COLOR.THEME2
+    , c2 = COLOR.THEME2
+    , c3 = COLOR.BLUE
     , size = 'large'
     , dx = 5
     , dy = 2
@@ -157,9 +157,9 @@ function RunState:init()
     , y = y+370
     , w = 64
     , h = 64
-    , c1 = {r=0, g=129, b=211}
-    , c2 = {r=0, g=129, b=211}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.THEME1
+    , c2 = COLOR.THEME1
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 1
     , dy = 2
@@ -169,9 +169,9 @@ function RunState:init()
     , y = y+390
     , w = 56
     , h = 40
-    , c1 = {r=51, g=68, b=97}
-    , c2 = {r=51, g=68, b=97}
-    , c3 = {r=236, g=45, b=51}
+    , c1 = COLOR.THEME2
+    , c2 = COLOR.THEME2
+    , c3 = COLOR.RED
     , size = 'large'
     , dx = 5
     , dy = 2
@@ -183,9 +183,9 @@ function RunState:init()
     , y = y+442
     , w = 130
     , h = 68
-    , c1 = {r=0, g=129, b=211}
-    , c2 = {r=51, g=68, b=97}
-    , c3 = {r=245, g=166, b=0}
+    , c1 = COLOR.THEME1
+    , c2 = COLOR.THEME2
+    , c3 = COLOR.YELLOW
     , size = 'xlarge'
     , dx = 6
     , dy = 6
@@ -197,9 +197,9 @@ function RunState:init()
     , y = y+520
     , w = 64
     , h = 64
-    , c1 = {r=0, g=129, b=211}
-    , c2 = {r=0, g=129, b=211}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.THEME1
+    , c2 = COLOR.THEME1
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 2
@@ -209,9 +209,9 @@ function RunState:init()
     , y = y+540
     , w = 56
     , h = 40
-    , c1 = {r=51, g=68, b=97}
-    , c2 = {r=51, g=68, b=97}
-    , c3 = {r=245, g=166, b=0}
+    , c1 = COLOR.THEME2
+    , c2 = COLOR.THEME2
+    , c3 = COLOR.YELLOW
     , size = 'large'
     , dx = 5
     , dy = 2
@@ -223,9 +223,9 @@ function RunState:init()
     , y = y+520
     , w = 64
     , h = 64
-    , c1 = {r=0, g=129, b=211}
-    , c2 = {r=0, g=129, b=211}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.THEME1
+    , c2 = COLOR.THEME1
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 1
     , dy = 2
@@ -235,9 +235,9 @@ function RunState:init()
     , y = y+540
     , w = 56
     , h = 40
-    , c1 = {r=51, g=68, b=97}
-    , c2 = {r=51, g=68, b=97}
-    , c3 = {r=245, g=166, b=0}
+    , c1 = COLOR.THEME2
+    , c2 = COLOR.THEME2
+    , c3 = COLOR.YELLOW
     , size = 'large'
     , dx = 5
     , dy = 2
@@ -249,9 +249,9 @@ function RunState:init()
     , y = y+465
     , w = 72
     , h = 80
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=253, g=95, b=85}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.PINK
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 4
     , dy = 8
@@ -263,9 +263,9 @@ function RunState:init()
     , y = y+370
     , w = 72
     , h = 80
-    , c1 = {r=25, g=25, b=25}
-    , c2 = {r=234, g=150, b=0}
-    , c3 = {r=255, g=255, b=255}
+    , c1 = COLOR.SHADOW
+    , c2 = COLOR.ORANGE
+    , c3 = COLOR.ABSWHITE
     , size = 'medium'
     , dx = 2
     , dy = 12
@@ -276,9 +276,9 @@ function RunState:init()
   , y = y+560
   , w = 72
   , h = 80
-  , c1 = {r=25, g=25, b=25}
-  , c2 = {r=214, g=107, b=27}
-  , c3 = {r=255, g=255, b=255}
+  , c1 = COLOR.SHADOW
+  , c2 = COLOR.BROWN
+  , c3 = COLOR.ABSWHITE
   , size = 'medium'
   , dx = 2
   , dy = 12
@@ -349,14 +349,8 @@ function RunState:buy(joker)
 end
 
 function RunState:earn()
-  local earn = 3
-  if self.blind==BLIND_BIG then
-    earn = 4
-  elseif self.blind==BLIND_BOSS then
-    earn = 5
-  end
   local interest = math.floor(self.money/5)
-  self.money = self.money+earn+interest
+  self.money = self.money+EARN[self.blind]+interest
 end
 
 
