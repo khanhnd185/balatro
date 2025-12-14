@@ -104,10 +104,9 @@ function Hand:eval()
   local sortedRanks = {}
   for _, r in ipairs(rankList) do sortedRanks[r+1] = true end
 
-  -- Handle Ace-low straight (A-2-3-4-5)
-  local aceLow = {0,1,2,3,4}  -- ranks 0=A,1=2,...
+  -- Handle Ace-high straight (10-J-Q-K-A)
   local straightCount = 0
-  for _, r in ipairs(aceLow) do
+  for _, r in ipairs({9,10,11,12,0}) do
     if sortedRanks[r+1] then
       straightCount = straightCount + 1
     end
