@@ -44,13 +44,13 @@ function DeckInfoState:render()
 
   self.window:render('Deck Info')
 
-  for i=1,52 do
-    if i%13==1 then
-      y = y+112
-      x = self.x+36
+  for i=1,60 do
+    if i%12==1 then
+      y = y+96
+      x = self.x+24
     end
     self.cards[i]:render_info(x,y)
-    x = x+32
+    x = x+52
   end
 
 

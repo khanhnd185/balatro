@@ -20,7 +20,7 @@ end
 
 function Joker:render_at(x,y)
   love.graphics.setColor(1, 1, 1, 1)
-  love.graphics.draw(gCardJokerSheet,gCardJoker[self.id],x,y)
+  love.graphics.draw(gCardJokerSheet,gCardJoker[self.id],x,y,0,SCALE,SCALE)
 end
 
 function Joker:render()

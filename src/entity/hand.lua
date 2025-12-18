@@ -81,8 +81,8 @@ function Hand:eval()
   local suits = {}  -- suit -> count
   local rankList = {} -- for sorting
   for card,_ in pairs(cards) do
-    local rank = card % 13
-    local suit = math.floor(card / 13)
+    local rank = card % 12
+    local suit = math.floor(card / 12)
     ranks[rank] = (ranks[rank] or 0) + 1
     suits[suit] = (suits[suit] or 0) + 1
     table.insert(rankList, rank)
@@ -106,7 +106,7 @@ function Hand:eval()
 
   -- Handle Ace-high straight (10-J-Q-K-A)
   local straightCount = 0
-  for _, r in ipairs({9,10,11,12,0}) do
+  for _, r in ipairs({8.9,10,11,0}) do
     if sortedRanks[r+1] then
       straightCount = straightCount + 1
     end

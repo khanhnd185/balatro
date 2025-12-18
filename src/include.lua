@@ -31,21 +31,24 @@ require 'src/entity/deck'
 require 'src/entity/joker'
 
 
-CARDW   = 103
-CARDH   = 138
+local cardw   = 48
+local cardh   = 64
+SCALE   = 2
+CARDW   = cardw*SCALE
+CARDH   = cardh*SCALE
 SCOREBOARD_W = 156
 SCOREBOARD_H = 32
 
-gCardJokerSheet = love.graphics.newImage('assets/images/deck-large-joker.png')
-gCardCoverSheet = love.graphics.newImage('assets/images/deck-large-back.png')
-gCardSheet      = love.graphics.newImage('assets/images/deck-large.png')
-gCardJoker  = GenerateQuads(gCardJokerSheet,CARDW,CARDH)
-gCardCover  = GenerateQuads(gCardCoverSheet,CARDW,CARDH)
-gCard       = GenerateQuads(gCardSheet,CARDW,CARDH)
+gCardJokerSheet = love.graphics.newImage('assets/images/cards-zoo.png')
+gCardCoverSheet = love.graphics.newImage('assets/images/cards-effect.png')
+gCardSheet      = love.graphics.newImage('assets/images/cards.png')
+gCardJoker  = GenerateQuads(gCardJokerSheet,cardw,cardh)
+gCardCover  = GenerateQuads(gCardCoverSheet,cardw,cardh)
+gCard       = GenerateQuads(gCardSheet,cardw,cardh)
 
 COVER_BACK    = 1
-COVER_FRONT   = 7
-COVER_SELECT  = 8
+COVER_FRONT   = 2
+COVER_SELECT  = 2
 
 -- rank enum
 RANK2 = 1
